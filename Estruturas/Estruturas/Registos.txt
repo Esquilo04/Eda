@@ -1,0 +1,54 @@
+Opcao: Reserva
+ID cliente: 1
+ID Meio: 2
+Data: 20/ 4
+Hora: 20:17
+
+Opcao: Entrega
+ID cliente: 1
+ID Meio: 2
+Data: 20/ 4
+Hora: 20:20
+
+Opcao: Reserva
+ID cliente: 1
+ID Meio: 1
+Data: 20/04
+Hora: 20:22
+
+Opcao: Reserva
+ID cliente: 1
+ID Meio: 2
+Data: 20/04
+Hora: 20:32
+
+Opcao: Reserva
+ID cliente: 1
+ID Meio: 2
+Data: 20/04
+Hora: 20:36
+
+Opcao: Reserva
+ID cliente: 1
+ID Meio: 1
+Data: 20/04
+Hora: 20:41
+
+Opcao: Reserva
+ID cliente: 1
+ID Meio: 2
+Data: 20/04
+Hora: 22:00
+
+Opcao: Reserva
+ID cliente: 1
+ID Meio: 1
+Data: 20/04
+Hora: 22:06
+
+Opcao: Reserva
+ID cliente: 1
+ID Meio: 1
+Data: 20/04
+Hora: 22:15
+

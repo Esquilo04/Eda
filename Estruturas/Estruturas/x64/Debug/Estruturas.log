@@ -1,0 +1,5 @@
+﻿  meio.c
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Estruturas (1)\Estruturas\Estruturas\Estruturas\meio.c(88,15): warning C4473: 'fscanf' : não há argumentos suficientes transmitidos para a cadeia de caracteres de formato
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Estruturas (1)\Estruturas\Estruturas\Estruturas\meio.c(88,15): message : espaços reservados e seus parâmetros esperam 8 argumentos variadic, mas 7 foram fornecidos
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Estruturas (1)\Estruturas\Estruturas\Estruturas\meio.c(88,15): message : o argumento variadic 8 ausente é requerido pela cadeia de formato '%d'
+  Estruturas.vcxproj -> C:\Users\nunin\OneDrive\Ambiente de Trabalho\Estruturas (1)\Estruturas\Estruturas\x64\Debug\Estruturas.exe
