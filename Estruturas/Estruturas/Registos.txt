@@ -52,3 +52,15 @@ ID Meio: 1
 Data: 20/04
 Hora: 22:15
 
+Opcao: Entrega
+ID cliente: 2
+ID Meio: 2
+Data: 21/04
+Hora: 10:34
+
+Opcao: Entrega
+ID cliente: 1
+ID Meio: 1
+Data: 21/04
+Hora: 10:35
+

@@ -171,7 +171,7 @@ int main()
 					mostrarMeio(meio);
 					printf("\n\nQual o id do meio que deseja reservar?\n");
 					scanf("%d", &idMeio);
-					meio = reservarMeio(meio, idMeio, saldo, idLoginCliente);
+					meio = reservarMeio(meio, cliente, idMeio, saldo, idLoginCliente);
 					
 					salvarCliente(cliente);
 					break;

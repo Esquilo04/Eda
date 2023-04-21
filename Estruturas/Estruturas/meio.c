@@ -154,11 +154,12 @@ void mostrarMeio(Meio* inicio)
 	}
 }
 
-Meio* reservarMeio(Meio* inicio, int id, int saldo, int idCliente)
+Meio* reservarMeio(Meio* inicio,Cliente* inicioC, int id, int saldo, int idCliente)
 {
 	Meio* meio = inicio; // Apontar para o início da lista
-	Cliente* cliente = NULL;
+	Cliente* cliente = inicioC;
 
+	int c, d;
 	while (meio != NULL)
 	{
 		if (id == meio->id)
@@ -177,9 +178,9 @@ Meio* reservarMeio(Meio* inicio, int id, int saldo, int idCliente)
 				{
 					meio->reservado = 0; // Atualizar o estado de reserva para 0
 					printf("Meio reservado com sucesso.\n");
-					cliente = adicionarSaldo(cliente, idCliente, saldo);
-					salvarMeio(inicio);
-					guardarRegistos("Reserva", idCliente, id);
+					c = salvarMeio(inicio);
+					d = guardarRegistos("Entrega", idCliente, id);
+					inicioC = adicionarSaldo(cliente, idCliente, -(meio->custo));
 					
 				}
 			}
@@ -193,9 +194,10 @@ Meio* reservarMeio(Meio* inicio, int id, int saldo, int idCliente)
 	return inicio;
 }
 
-Meio* entregarMeio(Meio* inicio, int id, int idCliente)
+Meio* entregarMeio(Meio* inicio, Cliente* inicioC, int id, int idCliente)
 {
 	Meio* meio = inicio; // Apontar para o início da lista
+	int c, d;
 
 	while (meio != NULL)
 	{
@@ -209,8 +211,8 @@ Meio* entregarMeio(Meio* inicio, int id, int idCliente)
 			{
 				meio->reservado = 1; // Atualizar o estado de reserva para 0
 				printf("Meio entregue com sucesso.\n");
-				salvarMeio(inicio);
-				guardarRegistos("Entrega", idCliente, id);
+				c = salvarMeio(inicio);
+				d = guardarRegistos("Entrega", idCliente, id);
 			}
 			return inicio; // Retornar o início da lista após a atualização
 		}
@@ -219,10 +221,4 @@ Meio* entregarMeio(Meio* inicio, int id, int idCliente)
 	// Se o meio com o ID especificado não foi encontrado na lista, exibir mensagem de erro
 	printf("Meio nao encontrado.\n");
 	return inicio;
-}
-
-int aux(int x) //funcao criada para caso seja reservado um meio, funcao retorna 1
-{
-	int a = x;
-	return a;
 }

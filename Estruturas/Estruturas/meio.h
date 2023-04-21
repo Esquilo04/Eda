@@ -1,6 +1,6 @@
 #pragma once
 #include <stdio.h>
-
+#include "cliente.h"
 
 typedef struct meio {
 	int id;
@@ -20,6 +20,6 @@ int salvarMeio(Meio* inicio);
 Meio* lerMeio();
 void mostrarMeio(Meio* inicio);
 int lerMaiorIdMeio();
-Meio* reservarMeio();
+Meio* reservarMeio(Meio* inicio, Cliente* inicioC, int id, int saldo, int idCliente);
 Meio* entregarMeio();
 int aux(int x);
