@@ -272,7 +272,7 @@ int main()
 		{
 			int opcao1, opcao2;
 			opcao = menuGestorClientes();
-			cliente = lerCliente();
+			cliente = lerCliente(cliente);
 			clear();
 			switch (opcao)
 			{
@@ -308,6 +308,8 @@ int main()
 				mostrarCliente(cliente);
 				break;
 			case 4:
+				printf("Aqui estao os dados dos cliente:\n\n");
+				mostrarCliente(cliente);
 				printf("Qual o id do cliente que deseja adicionar saldo?\n");
 				scanf("%d", &opcao1);
 				printf("Quanto saldo deseja adicionar?\n");
@@ -317,6 +319,8 @@ int main()
 
 				break;
 			case 5:
+				printf("Aqui estao os dados dos cliente:\n\n");
+				mostrarCliente(cliente);
 				printf("Qual o id do cliente que deseja alterar os dados?\n");
 				scanf("%d", &opcao2);
 				alterarDadosCliente(cliente, opcao2);
