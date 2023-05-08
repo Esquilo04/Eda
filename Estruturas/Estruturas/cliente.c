@@ -139,8 +139,6 @@ int loginCliente(Cliente* inicio, char username[], char password[])
 		}
 		cliente = cliente->seguinte;
 	}
-
-	printf("Não foi possível efetuar login.\n");
 	return 0;
 }
 

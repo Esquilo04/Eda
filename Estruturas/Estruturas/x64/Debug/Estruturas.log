@@ -1,10 +1,12 @@
 ﻿  main.c
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(297,37): warning C4047: '=': 'Cliente *' difere em níveis de indireção de 'int'
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(303,37): warning C4047: '=': 'Cliente *' difere em níveis de indireção de 'int'
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(318,37): warning C4047: '=': 'Cliente *' difere em níveis de indireção de 'int'
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(327,37): warning C4047: '=': 'Cliente *' difere em níveis de indireção de 'int'
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(360,28): warning C4047: '=': 'Meio *' difere em níveis de indireção de 'int'
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(367,28): warning C4047: '=': 'Meio *' difere em níveis de indireção de 'int'
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(97,46): warning C4101: 'idRemover': variável local não referenciada
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(168,10): warning C4101: 'auxx': variável local não referenciada
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(219,26): warning C4133: 'função': tipos incompatíveis - de 'Gestor *' para 'char *'
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(219,38): warning C4020: 'loginGestor': muitos parâmetros reais
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(300,40): warning C4047: '=': 'Cliente *' difere em níveis de indireção de 'int'
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(309,40): warning C4047: '=': 'Cliente *' difere em níveis de indireção de 'int'
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(327,40): warning C4047: '=': 'Cliente *' difere em níveis de indireção de 'int'
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(336,40): warning C4047: '=': 'Cliente *' difere em níveis de indireção de 'int'
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(364,32): warning C4047: '=': 'Meio *' difere em níveis de indireção de 'int'
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(375,32): warning C4047: '=': 'Meio *' difere em níveis de indireção de 'int'
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(98,46): warning C4101: 'idRemover': variável local não referenciada
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(172,14): warning C4101: 'auxx': variável local não referenciada
   Estruturas.vcxproj -> C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\x64\Debug\Estruturas.exe

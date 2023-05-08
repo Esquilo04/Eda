@@ -52,7 +52,6 @@ Meio* adicionarMeio(Meio* inicio, int id, char meio[], char localizacao[], int b
 int salvarMeio(Meio* inicio)
 {
 	FILE* fp;
-
 	fp = fopen("Meios.txt", "w");
 
 	if (fp != NULL)
@@ -175,6 +174,7 @@ Meio* reservarMeio(Meio* inicio,Cliente* inicioC, int id, int saldo, int idClien
 					printf("Nao tem saldo suficiente");
 				}
 				else
+
 				{
 					meio->reservado = 0; // Atualizar o estado de reserva para 0
 					printf("Meio reservado com sucesso.\n");
@@ -221,4 +221,44 @@ Meio* entregarMeio(Meio* inicio, Cliente* inicioC, int id, int idCliente)
 	// Se o meio com o ID especificado não foi encontrado na lista, exibir mensagem de erro
 	printf("Meio nao encontrado.\n");
 	return inicio;
+}
+
+void ordenarPorAutonomia(Meio* inicio) {
+	int trocado = 1;
+	while (trocado) {
+		trocado = 0;
+		Meio* anterior = NULL;
+		Meio* atual = inicio;
+		while (atual->seguinte != NULL) {
+			if (atual->autonomia < atual->seguinte->autonomia) {
+				Meio* proximo = atual->seguinte;
+				atual->seguinte = proximo->seguinte;
+				proximo->seguinte = atual;
+				if (anterior != NULL) {
+					anterior->seguinte = proximo;
+				}
+				else {
+					inicio = proximo;
+				}
+				anterior = proximo;
+				trocado = 1;
+			}
+			else {
+				anterior = atual;
+				atual = atual->seguinte;
+			}
+		}
+	}
+}
+
+void listarPorAutonomia(Meio* inicio) {
+	if (inicio == NULL) {
+		printf("Nenhum transporte registado.\n");
+		return;
+	}
+	ordenarPorAutonomia(inicio);
+	while (inicio != NULL) {
+		printf("ID: %d\nMeio: %s\nLocalizacao: %s\nBateria: %d\nAutonomia: %d\nCusto: %d\nEstado: %d\n\n", inicio->id, inicio->meio, inicio->localizacao, inicio->bateria, inicio->autonomia, inicio->custo, inicio->reservado);
+		inicio = inicio->seguinte;
+	}
 }

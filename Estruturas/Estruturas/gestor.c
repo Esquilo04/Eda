@@ -5,19 +5,20 @@
 #include "gestor.h"
 
 
-int loginGestor(char username[], char password[])
+int loginGestor(Gestor* inicio, char username[], char password[])
 {
-	if (strstr(username, "nuno") && strstr(password, "nuno")) //compara as duas strings e se ambas tiverem o mesmo conteudo, efetua login
+	Gestor* gestor = inicio;
+	while (gestor != NULL)
 	{
-		printf("Login de administrador efetuado com sucesso.\n");
-		return(1);
+		if (strcmp(gestor->username, username) == 0 && strcmp(gestor->password, password) == 0)
+		{
+			printf("\nLogin efetuado com sucesso!\n\n");
+			return 1;
+		}
+		gestor = gestor->seguinte;
+
 	}
-	else
-	{
-		printf("Login incorreto.\n");
-		exit(0);
-		return(0);
-	}
+	return 0;
 
 }
 
