@@ -153,6 +153,19 @@ void mostrarMeio(Meio* inicio)
 	}
 }
 
+void mostrarMeiosDisponiveis(Meio* inicio)
+{
+	printf("\nLista dos meios disponiveis.\n\n");
+	while (inicio != NULL)
+	{
+		if (inicio->reservado == 1)
+		{
+			printf("ID: %d\nMeio: %s\nLocalizacao: %s\nBateria: %d\nAutonomia: %d\nCusto: %d\nEstado: Disponivel\n\n", inicio->id, inicio->meio, inicio->localizacao, inicio->bateria, inicio->autonomia, inicio->custo);
+		}
+		inicio = inicio->seguinte;
+	}
+}
+
 Meio* reservarMeio(Meio* inicio,Cliente* inicioC, int id, int saldo, int idCliente)
 {
 	Meio* meio = inicio; // Apontar para o início da lista

@@ -24,3 +24,4 @@ Meio* reservarMeio(Meio* inicio, Cliente* inicioC, int id, int saldo, int idClie
 Meio* entregarMeio();
 void ordenarPorAutonomia(Meio* inicio);
 void listarPorAutonomia(Meio* inicio);
+void mostrarMeiosDisponiveis(Meio* inicio);

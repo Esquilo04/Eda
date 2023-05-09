@@ -148,3 +148,27 @@ ID Meio: 4
 Data: 09/05
 Hora: 10:31
 
+Opcao: Entrega
+ID cliente: 1
+ID Meio: 1
+Data: 09/05
+Hora: 18:12
+
+Opcao: Entrega
+ID cliente: 1
+ID Meio: 1
+Data: 09/05
+Hora: 18:12
+
+Opcao: Entrega
+ID cliente: 1
+ID Meio: 3
+Data: 09/05
+Hora: 18:15
+
+Opcao: Entrega
+ID cliente: 1
+ID Meio: 1
+Data: 09/05
+Hora: 18:26
+

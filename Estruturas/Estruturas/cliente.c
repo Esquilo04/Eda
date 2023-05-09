@@ -134,7 +134,6 @@ int loginCliente(Cliente* inicio, char username[], char password[])
 	{
 		if (strcmp(cliente->username, username) == 0 && strcmp(cliente->password, password) == 0)
 		{
-			printf("Login efetuado com sucesso.\n");
 			return 1;
 		}
 		cliente = cliente->seguinte;
