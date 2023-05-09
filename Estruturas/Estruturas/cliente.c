@@ -226,6 +226,24 @@ Cliente* adicionarSaldo(Cliente* inicio, int id, int saldo)
 		if (inicio->id == id)
 		{
 			inicio->saldo += saldo;
+			printf("Saldo adicionado com sucesso.\n\n");
+			return(inicio);
+		}
+		else
+		{
+			inicio = inicio->seguinte;
+		}
+
+	}
+}
+
+Cliente* removerSaldo(Cliente* inicio, int id, int saldo)
+{
+	while (inicio != NULL)
+	{
+		if (inicio->id == id)
+		{
+			inicio->saldo -= saldo;
 			return(inicio);
 		}
 		else

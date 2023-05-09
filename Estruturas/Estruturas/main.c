@@ -115,12 +115,12 @@ int main()
 		printf("2 - Cliente.\n");
 		printf("0 - Sair.\n");
 		scanf("%d", &cargo);
-		clear();
 
 		if (cargo == 2)
 		{
 			int opcao2;
 			do {
+				clear();
 				printf("O que deseja fazer?\n");
 				printf("1 - Registar novo usuario.\n");
 				printf("2 - Login.\n");
@@ -147,6 +147,7 @@ int main()
 					scanf("%d", &saldo);
 					cliente = adicionarCliente(cliente, idCliente, nomeCliente, username, password, contactoCliente, nifCliente, morada, saldo);
 					salvarCliente(cliente);
+					clear();
 				}
 				else if (opcao2 == 2)
 				{
@@ -165,46 +166,53 @@ int main()
 
 						do {
 							opcao = menuCliente();
-								if (opcao == 1)
-								{
-									cliente = lerCliente();
-									saldo = lerSaldoCliente(cliente, idLoginCliente);
-									int auxx;
-									clear();
-									printf("Aqui estao os meios existentes:\n\n");
-									mostrarMeio(meio);
-									printf("\n\nQual o id do meio que deseja reservar?\n");
-									scanf("%d", &idMeio);
-									meio = reservarMeio(meio, cliente, idMeio, saldo, idLoginCliente);
-									salvarCliente(cliente);
-								}
-								if (opcao == 2)
-								{
-									alterarDadosCliente(cliente, idLoginCliente);
-									salvarCliente(cliente);
-									clear();
-								}
-								if (opcao == 3)
-								{
-									printf("Quanto saldo pretende adicionar?\n");
-									scanf("%d", &saldo);
-									cliente = adicionarSaldo(cliente, idLoginCliente, saldo);
-									salvarCliente(cliente);
-								}
-								if (opcao == 4)
-								{
-									clear();
-									printf("Aqui estao os meios existentes:\n\n");
-									mostrarMeio(meio);
-									printf("\n\nQual o id do meio que deseja entregar?\n");
-									scanf("%d", &idMeio);
-									meio = entregarMeio(meio, idMeio, idLoginCliente);
-								}
+							if (opcao == 1)
+							{
+								cliente = lerCliente();
+								saldo = lerSaldoCliente(cliente, idLoginCliente);
+								int auxx;
+								clear();
+								printf("Aqui estao os meios existentes:\n\n");
+								mostrarMeio(meio);
+								printf("\n\nQual o id do meio que deseja reservar?\n");
+								scanf("%d", &idMeio);
+								clear();
+								meio = reservarMeio(meio, cliente, idMeio, saldo, idLoginCliente);
+								salvarCliente(cliente);
+							}
+							if (opcao == 2)
+							{
+								clear();
+								alterarDadosCliente(cliente, idLoginCliente);
+								salvarCliente(cliente);
+							}
+							if (opcao == 3)
+							{
+								printf("Quanto saldo pretende adicionar?\n");
+								scanf("%d", &saldo);
+								clear();
+								cliente = adicionarSaldo(cliente, idLoginCliente, saldo);
+								salvarCliente(cliente);
+							}
+							if (opcao == 4)
+							{
+								clear();
+								printf("Aqui estao os meios existentes:\n\n");
+								mostrarMeio(meio);
+								printf("\n\nQual o id do meio que deseja entregar?\n");
+								scanf("%d", &idMeio);
+								clear();
+								meio = entregarMeio(meio, idMeio, idLoginCliente);
+							}
 						} while (opcao != 0);
 					}
 					else {
 						printf("\nLogin incorreto.\n\n");
 					}
+				}
+				else if (opcao2 == 3)
+				{
+					clear();
 				}
 			} while (opcao2 != 3);
 		}
@@ -216,10 +224,11 @@ int main()
 			scanf("%s", username);
 			printf("Qual e a sua password?\n");
 			scanf("%s", password);
+			clear();
 			if (loginGestor(gestor, username, password) == 1)
 			{
 				do {
-					int opcao = 0;
+					int opcao;
 					printf("Escolha uma opcao.\n");
 					printf("1 - Gerir dados dos gestores\n");
 					printf("2 - Gerir dados dos clientes.\n");
@@ -243,37 +252,41 @@ int main()
 								scanf("%d", &contactoGestor);
 								printf("Qual e o seu NIF?\n");
 								scanf("%d", &nifGestor);
-								gestor = adicionarGestor(gestor, idGestor, nomeGestor, passGestor, contactoGestor, nifGestor);
 								clear();
+								gestor = adicionarGestor(gestor, idGestor, nomeGestor, passGestor, contactoGestor, nifGestor);
 							}
-							if (opcao == 2)
+							else if (opcao == 2)
 							{
 								printf("Aqui estao os dados dos gestores:\n\n");
 								mostrarGestor(gestor);
 								printf("Qual o id do gestor que pretende remover?\n");
 								scanf("%d", &idGestor);
-								gestor = removerGestor(gestor, idGestor);
 								clear();
+								gestor = removerGestor(gestor, idGestor);
 							}
-							if (opcao == 3)
+							else if (opcao == 3)
 							{
 								printf("Aqui estao os dados dos gestores:\n\n");
 								mostrarGestor(gestor);
 								printf("Qual e o id?\n");
 								scanf("%d", &idGestor);
-								alterarDadosGestor(gestor, idGestor);
 								clear();
+								alterarDadosGestor(gestor, idGestor);
 							}
-							if (opcao == 4)
+							else if (opcao == 4)
 							{
+								clear();
 								mostrarGestor(gestor);
+							}
+							else if (opcao == 0)
+							{
+								clear();
 							}
 						} while (opcao != 0);
 						salvarGestor(gestor);
 					}
 					else if (opcao == 2)
 					{
-						clear();
 						int opcao1, opcao2;
 						do {
 						opcao = menuGestorClientes();
@@ -296,25 +309,27 @@ int main()
 							scanf("%s", morada);
 							printf("Quanto saldo pretende adicionar na conta?\n");
 							scanf("%d", &saldo);
+							clear();
 							cliente = adicionarCliente(cliente, idCliente, nomeCliente, username, password, contactoCliente, nifCliente, morada, saldo);
 							cliente = salvarCliente(cliente);
 						}
-						if (opcao == 2)
+						else if (opcao == 2)
 						{
 							printf("Aqui estao os dados dos cliente:\n\n");
 							mostrarCliente(cliente);
 							printf("Introduza o id do cliente a remover: ");
 							scanf("%d", &opcao);
+							clear();
 							cliente = removerCliente(cliente, opcao);
 							cliente = salvarCliente(cliente);
-							clear();
 						}
-						if (opcao == 3)
+						else if (opcao == 3)
 						{
 							cliente = lerCliente();
+							clear();
 							mostrarCliente(cliente);
 						}
-						if (opcao == 4)
+						else if (opcao == 4)
 						{
 							clear();
 							printf("Aqui estao os dados dos cliente:\n\n");
@@ -323,19 +338,26 @@ int main()
 							scanf("%d", &opcao1);
 							printf("Quanto saldo deseja adicionar?\n");
 							scanf("%d", &opcao2);
+							clear();
 							cliente = adicionarSaldo(cliente, opcao1, opcao2);
 							cliente = salvarCliente(cliente);
 						}
-						if (opcao == 5)
+						else if (opcao == 5)
 						{
 							printf("Aqui estao os dados dos cliente:\n\n");
 							mostrarCliente(cliente);
 							printf("Qual o id do cliente que deseja alterar os dados?\n");
 							scanf("%d", &opcao2);
+							clear();
 							alterarDadosCliente(cliente, opcao2);
 							cliente = salvarCliente(cliente);
 						}
+						else if (opcao == 0)
+						{
+							clear();
+						}
 					} while (opcao != 0);
+
 					}
 					else if (opcao == 3)
 					{
@@ -358,32 +380,43 @@ int main()
 								scanf("%d", &aut);
 								printf("Qual e o custo do meio?\n");
 								scanf("%d", &cus);
+								clear();
 								res = 1;
 								meio = lerMeio();
 								meio = adicionarMeio(meio, idMeio, meio_, loc, bat, aut, cus, res);
 								meio = salvarMeio(meio);
 							}
-							if (opcao == 2)
+							else if (opcao == 2)
 							{
 								clear();
 								printf("Aqui estao os dados dos meios:\n\n");
 								mostrarMeio(meio);
 								printf("Introduza o id do meio a remover: ");
 								scanf("%d", &opcao1);
+								clear();
 								meio = lerMeio();
 								meio = removerMeio(meio, opcao1);
 								meio = salvarMeio(meio);
-								clear();
 							}
-							if (opcao == 3)
+							else if (opcao == 3)
 							{
+								clear();
 								mostrarMeio(meio);
 							}
-							if (opcao == 4)
+							else if (opcao == 4)
 							{
+								clear();
 								listarPorAutonomia(meio);
 							}
+							else if (opcao == 0)
+							{
+								clear();
+							}
 						} while (opcao != 0);
+					}
+					else if (opcao == 0)
+					{
+						clear();
 					}
 				} while (opcao != 0);
 			}

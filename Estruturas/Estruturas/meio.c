@@ -171,7 +171,7 @@ Meio* reservarMeio(Meio* inicio,Cliente* inicioC, int id, int saldo, int idClien
 			{
 				if(saldo<meio->custo)
 				{
-					printf("Nao tem saldo suficiente");
+					printf("Nao tem saldo suficiente.\n");
 				}
 				else
 
@@ -180,7 +180,7 @@ Meio* reservarMeio(Meio* inicio,Cliente* inicioC, int id, int saldo, int idClien
 					printf("Meio reservado com sucesso.\n");
 					c = salvarMeio(inicio);
 					d = guardarRegistos("Entrega", idCliente, id);
-					inicioC = adicionarSaldo(cliente, idCliente, -(meio->custo));
+					inicioC = removerSaldo(cliente, idCliente, (meio->custo));
 					
 				}
 			}

@@ -1,12 +1,26 @@
-﻿  main.c
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(219,26): warning C4133: 'função': tipos incompatíveis - de 'Gestor *' para 'char *'
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(219,38): warning C4020: 'loginGestor': muitos parâmetros reais
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(300,40): warning C4047: '=': 'Cliente *' difere em níveis de indireção de 'int'
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(309,40): warning C4047: '=': 'Cliente *' difere em níveis de indireção de 'int'
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(327,40): warning C4047: '=': 'Cliente *' difere em níveis de indireção de 'int'
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(336,40): warning C4047: '=': 'Cliente *' difere em níveis de indireção de 'int'
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(364,32): warning C4047: '=': 'Meio *' difere em níveis de indireção de 'int'
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(375,32): warning C4047: '=': 'Meio *' difere em níveis de indireção de 'int'
+﻿  cliente.c
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\cliente.c(179,19): warning C4098: 'alterarDadosCliente': função 'void' retornando um valor
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\cliente.c(185,19): warning C4098: 'alterarDadosCliente': função 'void' retornando um valor
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\cliente.c(191,19): warning C4098: 'alterarDadosCliente': função 'void' retornando um valor
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\cliente.c(197,19): warning C4098: 'alterarDadosCliente': função 'void' retornando um valor
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\cliente.c(203,19): warning C4098: 'alterarDadosCliente': função 'void' retornando um valor
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\cliente.c(209,19): warning C4098: 'alterarDadosCliente': função 'void' retornando um valor
+  main.c
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(228,26): warning C4133: 'função': tipos incompatíveis - de 'Gestor *' para 'char *'
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(228,38): warning C4020: 'loginGestor': muitos parâmetros reais
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(314,40): warning C4047: '=': 'Cliente *' difere em níveis de indireção de 'int'
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(324,40): warning C4047: '=': 'Cliente *' difere em níveis de indireção de 'int'
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(343,40): warning C4047: '=': 'Cliente *' difere em níveis de indireção de 'int'
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(353,40): warning C4047: '=': 'Cliente *' difere em níveis de indireção de 'int'
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(387,32): warning C4047: '=': 'Meio *' difere em níveis de indireção de 'int'
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(399,32): warning C4047: '=': 'Meio *' difere em níveis de indireção de 'int'
 C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(98,46): warning C4101: 'idRemover': variável local não referenciada
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(172,14): warning C4101: 'auxx': variável local não referenciada
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(173,13): warning C4101: 'auxx': variável local não referenciada
+  meio.c
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\meio.c(87,15): warning C4473: 'fscanf' : não há argumentos suficientes transmitidos para a cadeia de caracteres de formato
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\meio.c(87,15): message : espaços reservados e seus parâmetros esperam 8 argumentos variadic, mas 7 foram fornecidos
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\meio.c(87,15): message : o argumento variadic 8 ausente é requerido pela cadeia de formato '%d'
+  Gerando Código...
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\cliente.c(238): warning C4715: 'adicionarSaldo': nem todos os caminhos de controle retornam um valor
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\cliente.c(255): warning C4715: 'removerSaldo': nem todos os caminhos de controle retornam um valor
   Estruturas.vcxproj -> C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\x64\Debug\Estruturas.exe

@@ -94,3 +94,57 @@ ID Meio: 2
 Data: 08/05
 Hora: 12:00
 
+Opcao: Entrega
+ID cliente: 4
+ID Meio: 5
+Data: 09/05
+Hora: 09:25
+
+Opcao: Entrega
+ID cliente: 4
+ID Meio: 1
+Data: 09/05
+Hora: 09:29
+
+Opcao: Entrega
+ID cliente: 4
+ID Meio: 4
+Data: 09/05
+Hora: 09:33
+
+Opcao: Entrega
+ID cliente: 1
+ID Meio: 4
+Data: 09/05
+Hora: 09:33
+
+Opcao: Entrega
+ID cliente: 1
+ID Meio: 3
+Data: 09/05
+Hora: 10:21
+
+Opcao: Entrega
+ID cliente: 1
+ID Meio: 1
+Data: 09/05
+Hora: 10:21
+
+Opcao: Entrega
+ID cliente: 1
+ID Meio: 1
+Data: 09/05
+Hora: 10:21
+
+Opcao: Entrega
+ID cliente: 1
+ID Meio: 1
+Data: 09/05
+Hora: 10:22
+
+Opcao: Entrega
+ID cliente: 1
+ID Meio: 4
+Data: 09/05
+Hora: 10:31
+

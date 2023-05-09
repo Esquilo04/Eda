@@ -23,6 +23,7 @@ void alterarDadosCliente(Cliente* inicio, int id);
 int salvarCliente(Cliente* inicio);
 Cliente* lerCliente(inicio);
 Cliente* adicionarSaldo(Cliente* inicio, int id, int saldo);
+Cliente* removerSaldo(Cliente* inicio, int id, int saldo);
 int lerMaiorIdCliente();
 int lerIdCliente();
 int lerSaldoCliente();
