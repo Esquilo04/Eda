@@ -271,6 +271,22 @@ int lerMaiorIdCliente()
 	return maiorId;
 }
 
+int lerIdDisponivel(Cliente* inicio)
+{
+	int aux=0;
+	Cliente* cliente = inicio;
+
+	while (cliente != NULL)
+	{
+		if(cliente->id>aux)
+		{
+			aux = cliente->id;
+		}
+		cliente = cliente->seguinte;
+	}
+	return ++aux;
+}
+
 int lerSaldoCliente(Cliente* inicio, int id)
 {
 	Cliente* cliente = inicio;

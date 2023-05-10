@@ -27,3 +27,4 @@ void ordenarPorAutonomia(Meio* inicio);
 void listarPorAutonomia(Meio* inicio);
 void mostrarMeiosDisponiveis(Meio* inicio);
 void mostrarMeiosReservados(Meio* inicio, int idCliente);
+void mostrarPorLocalizacao(Meio* inicio, char loc[]);

@@ -64,6 +64,7 @@ int menuGestorMeios()
 	printf("2 - Remover meio\n");
 	printf("3 - Listar meios na consola\n");
 	printf("4 - Ordenar meios por autonomia\n");
+	printf("5 - Procurar meios por determinada localizacao\n");
 	printf("9 - Voltar ao menu\n");
 	scanf("%d", &op);
 	return(op);
@@ -128,8 +129,10 @@ int main()
 				scanf("%d", &opcao2);
 				if (opcao2 == 1)
 				{
+					cliente = lerCliente();
 					clear();
-					idCliente = lerMaiorIdCliente() + 1;
+					//idCliente = lerMaiorIdCliente() + 1;
+					idCliente = lerIdDisponivel(cliente);
 					idLoginCliente = idCliente;
 					printf("Escreva o seu nome.\n");
 					scanf("%s", nomeCliente);
@@ -417,6 +420,15 @@ int main()
 							{
 								clear();
 								listarPorAutonomia(meio);
+							}
+							else if (opcao4 == 5)
+							{
+								clear();
+								char loc[100];
+								printf("Qual a localizacao que deseja procurar meios disponiveis?\n");
+								scanf("%s", loc);
+								clear();
+								mostrarPorLocalizacao(meio, loc);
 							}
 							else if (opcao4 == 9)
 							{

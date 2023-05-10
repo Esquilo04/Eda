@@ -272,7 +272,8 @@ void ordenarPorAutonomia(Meio* inicio) {
 	}
 }
 
-void listarPorAutonomia(Meio* inicio) {
+void listarPorAutonomia(Meio* inicio)
+{
 	if (inicio == NULL) {
 		printf("Nenhum transporte registado.\n");
 		return;
@@ -281,5 +282,25 @@ void listarPorAutonomia(Meio* inicio) {
 	while (inicio != NULL) {
 		printf("ID: %d\nMeio: %s\nLocalizacao: %s\nBateria: %d\nAutonomia: %d\nCusto: %d\nEstado: %d\n\n", inicio->id, inicio->meio, inicio->localizacao, inicio->bateria, inicio->autonomia, inicio->custo, inicio->reservado);
 		inicio = inicio->seguinte;
+	}
+}
+
+void mostrarPorLocalizacao(Meio* inicio, char loc[])
+{
+	Meio* meio = inicio; // Apontar para o início da lista
+	int i = 0;
+	printf("Meios disponiveis na localizacao: %s\n\n", loc);
+	while (meio != NULL)
+	{
+		if (strcmp(meio->localizacao, loc) == 0)
+		{
+			printf("ID: %d\nMeio: %s\nLocalizacao: %s\nBateria: %d\nAutonomia: %d\nCusto: %d\nEstado: %d\n\n", meio->id, meio->meio, meio->localizacao, meio->bateria, meio->autonomia, meio->custo, meio->reservado);
+			i++;
+		}
+		meio = meio->seguinte;
+	}
+	if(i==0)
+	{
+		printf("Nenhum meio disponivel nessa localizacao.\n");
 	}
 }

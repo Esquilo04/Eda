@@ -1,6 +1,4 @@
-6;teste;teste;1;2323;22;1;0
-3;biciclete;bragaa;1;200;34;0;0
-1;bike;porto;444;123;90;0;0
-2;trotinete;algarve;12;90;13;1;0
-4;teste;teste;10;32;11;1;2
-5;bicicleta;taipas;13;14;15;0;0
+3;biciclete;porto;1;200;34;1;2
+1;bike;taipas;444;123;90;0;0
+2;trotinete;porto;12;90;13;0;0
+5;bicicleta;algarve;13;14;15;0;0

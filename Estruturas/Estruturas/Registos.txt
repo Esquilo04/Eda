@@ -232,3 +232,33 @@ ID Meio: 2
 Data: 10/05
 Hora: 01:37
 
+Opcao: Entrega
+ID cliente: 2
+ID Meio: 2
+Data: 10/05
+Hora: 15:11
+
+Opcao: Entrega
+ID cliente: 2
+ID Meio: 2
+Data: 10/05
+Hora: 15:12
+
+Opcao: Entrega
+ID cliente: 2
+ID Meio: 3
+Data: 10/05
+Hora: 16:34
+
+Opcao: Entrega
+ID cliente: 2
+ID Meio: 5
+Data: 10/05
+Hora: 16:34
+
+Opcao: Entrega
+ID cliente: 2
+ID Meio: 5
+Data: 10/05
+Hora: 16:35
+
