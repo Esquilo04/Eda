@@ -9,27 +9,8 @@ Cliente* adicionarSaldo(Cliente* inicio, int id, int saldo);
 
 
 
-Meio* adicionarMeio(Meio* inicio, int id, char meio[], char localizacao[], int bat, int autonomia, int custo, int reservado)
+Meio* adicionarMeio(Meio* inicio, int id, char meio[], char localizacao[], int bat, int autonomia, int custo, int reservado, int idcliente)
 {
-	// Verificar se o meio com o mesmo ID já existe na lista encadeada
-	Meio* atual = inicio;
-	while (atual != NULL)
-	{
-		if (atual->id == id)
-		{
-			// Atualizar os dados do meio existente
-			strcpy(atual->meio, meio);
-			strcpy(atual->localizacao, localizacao);
-			atual->bateria = bat;
-			atual->autonomia = autonomia;
-			atual->custo = custo;
-			atual->reservado = reservado;
-			return inicio;
-		}
-		atual = atual->seguinte;
-	}
-
-	// Se o meio não existe, adicionar um novo meio à lista encadeada
 	Meio* novo = malloc(sizeof(struct meio));
 	if (novo != NULL)
 	{
@@ -40,6 +21,7 @@ Meio* adicionarMeio(Meio* inicio, int id, char meio[], char localizacao[], int b
 		novo->autonomia = autonomia;
 		novo->custo = custo;
 		novo->reservado = reservado;
+		novo->idcliente = idcliente;
 		novo->seguinte = inicio;
 		return(novo);
 	}
@@ -59,7 +41,7 @@ int salvarMeio(Meio* inicio)
 		Meio* meio = inicio;
 		while (meio != NULL)
 		{
-			fprintf(fp, "%d;%s;%s;%d;%d;%d;%d\n", meio->id, meio->meio, meio->localizacao, meio->bateria, meio->autonomia, meio->custo, meio->reservado);
+			fprintf(fp, "%d;%s;%s;%d;%d;%d;%d;%d\n", meio->id, meio->meio, meio->localizacao, meio->bateria, meio->autonomia, meio->custo, meio->reservado, meio->idcliente);
 			meio = meio->seguinte;
 		}
 		fclose(fp);
@@ -77,15 +59,15 @@ Meio* lerMeio()
 	Meio* meio = NULL;
 
 	fp = fopen("Meios.txt", "r");
-	int i,bat, aut, custo, res;
+	int i,bat, aut, custo, res, icliente;
 	char tipomeio[50], loc[50];
 
 	if (fp != NULL)
 	{
 		while (!feof(fp))
 		{
-			fscanf(fp, "%d;%[^;];%[^;];%d;%d;%d;%d;%d\n", &i, tipomeio, loc, &bat, &aut, &custo, &res);
-			meio = adicionarMeio(meio, i, tipomeio, loc, bat, aut, custo, res);
+			fscanf(fp, "%d;%[^;];%[^;];%d;%d;%d;%d;%d\n", &i, tipomeio, loc, &bat, &aut, &custo, &res, &icliente);
+			meio = adicionarMeio(meio, i, tipomeio, loc, bat, aut, custo, res, icliente);
 		}
 		fclose(fp);
 	}
@@ -158,9 +140,25 @@ void mostrarMeiosDisponiveis(Meio* inicio)
 	printf("\nLista dos meios disponiveis.\n\n");
 	while (inicio != NULL)
 	{
-		if (inicio->reservado == 1)
+		if (inicio->reservado == 0)
 		{
 			printf("ID: %d\nMeio: %s\nLocalizacao: %s\nBateria: %d\nAutonomia: %d\nCusto: %d\nEstado: Disponivel\n\n", inicio->id, inicio->meio, inicio->localizacao, inicio->bateria, inicio->autonomia, inicio->custo);
+		}
+		inicio = inicio->seguinte;
+	}
+}
+
+void mostrarMeiosReservados(Meio* inicio, int idCliente)
+{
+	printf("\nLista dos meios reservados por si.\n\n");
+	while (inicio != NULL)
+	{
+		if (inicio->reservado == 1)
+		{
+			if (inicio->idcliente == idCliente)
+			{
+				printf("ID: %d\nMeio: %s\nLocalizacao: %s\nBateria: %d\nAutonomia: %d\nCusto: %d\nEstado: A ser utilizado\n\n", inicio->id, inicio->meio, inicio->localizacao, inicio->bateria, inicio->autonomia, inicio->custo);
+			}
 		}
 		inicio = inicio->seguinte;
 	}
@@ -176,9 +174,9 @@ Meio* reservarMeio(Meio* inicio,Cliente* inicioC, int id, int saldo, int idClien
 	{
 		if (id == meio->id)
 		{
-			if (meio->reservado == 0)
+			if (meio->reservado == 1)
 			{
-				printf("Meio ja reservado.\n");
+				printf("Meio nao disponivel para reserva.\n");
 			}
 			else
 			{
@@ -187,9 +185,9 @@ Meio* reservarMeio(Meio* inicio,Cliente* inicioC, int id, int saldo, int idClien
 					printf("Nao tem saldo suficiente.\n");
 				}
 				else
-
 				{
-					meio->reservado = 0; // Atualizar o estado de reserva para 0
+					meio->reservado = 1; // Atualizar o estado de reserva para 0
+					meio->idcliente = idCliente; //Atualiza o idcliente de 0 para o respetivo id do cliente
 					printf("Meio reservado com sucesso.\n");
 					c = salvarMeio(inicio);
 					d = guardarRegistos("Entrega", idCliente, id);
@@ -207,10 +205,12 @@ Meio* reservarMeio(Meio* inicio,Cliente* inicioC, int id, int saldo, int idClien
 	return inicio;
 }
 
-Meio* entregarMeio(Meio* inicio, Cliente* inicioC, int id, int idCliente)
+Meio* entregarMeio(Meio* inicio, int id, int idCliente)
 {
 	Meio* meio = inicio; // Apontar para o início da lista
 	int c, d;
+	int aux;
+	aux = idCliente;
 
 	while (meio != NULL)
 	{
@@ -218,14 +218,22 @@ Meio* entregarMeio(Meio* inicio, Cliente* inicioC, int id, int idCliente)
 		{
 			if (meio->reservado == 1)
 			{
-				printf("Nao e possivel entregar um meio que nao esteja reservado por si.\n");
+				if (meio->idcliente == aux)
+				{
+					meio->reservado = 0;// Atualizar o estado de reserva para 0
+					meio->idcliente = 0; //atualiza o id associado ao meio para 0
+					printf("Meio entregue com sucesso.\n");
+					c = salvarMeio(inicio);
+					d = guardarRegistos("Entrega", idCliente, id);
+				}
+				else
+				{
+					printf("Nao e possivel entregar um meio reservado por outra pessoa.\n");
+				}
 			}
 			else
 			{
-				meio->reservado = 1; // Atualizar o estado de reserva para 0
-				printf("Meio entregue com sucesso.\n");
-				c = salvarMeio(inicio);
-				d = guardarRegistos("Entrega", idCliente, id);
+				printf("Nao e possivel entregar um meio que nao esteja reservado.\n");
 			}
 			return inicio; // Retornar o início da lista após a atualização
 		}

@@ -107,7 +107,7 @@ int main()
 
 	int idMeio;
 	char meio_[50], loc[50];
-	int bat, aut, cus, res;
+	int bat, aut, cus;
 	int opcao = 0, cargo;
 	do {
 		printf("\nQual o seu cargo?\n\n");
@@ -181,6 +181,7 @@ int main()
 								scanf("%d", &idMeio);
 								clear();
 								meio = reservarMeio(meio, cliente, idMeio, saldo, idLoginCliente);
+								int salvarmeio(meio);
 								salvarCliente(cliente);
 							}
 							if (opcao5 == 2)
@@ -200,8 +201,8 @@ int main()
 							if (opcao5 == 4)
 							{
 								clear();
-								printf("Aqui estao os meios existentes:\n\n");
-								mostrarMeio(meio);
+								meio = lerMeio();
+								mostrarMeiosReservados(meio, idLoginCliente);
 								printf("\n\nQual o id do meio que deseja entregar?\n");
 								scanf("%d", &idMeio);
 								clear();
@@ -391,9 +392,8 @@ int main()
 								printf("Qual e o custo do meio?\n");
 								scanf("%d", &cus);
 								clear();
-								res = 1;
 								meio = lerMeio();
-								meio = adicionarMeio(meio, idMeio, meio_, loc, bat, aut, cus, res);
+								meio = adicionarMeio(meio, idMeio, meio_, loc, bat, aut, cus, 0, 0);
 								meio = salvarMeio(meio);
 							}
 							else if (opcao4 == 2)
