@@ -101,8 +101,8 @@ void clearr()
 
 int main()
 {
-	Grafo guimaraes = NULL;
-//	guimaraes = lerGrafo();
+	Grafo* guimaraes = NULL;
+	guimaraes = lerGrafo();
 
 	Cliente* cliente = NULL;
 	cliente = lerCliente();

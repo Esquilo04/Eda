@@ -1,6 +1,16 @@
 ﻿  main.c
 C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(249,26): warning C4133: 'função': tipos incompatíveis - de 'Gestor *' para 'char *'
 C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(249,38): warning C4020: 'loginGestor': muitos parâmetros reais
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(313,33): warning C4047: 'função': 'Grafo *' difere em níveis de indireção de 'Grafo **'
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(313,23): warning C4024: 'criarVertice': tipos diferentes para parâmetro formal e real 1
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(332,31): warning C4047: 'função': 'Grafo' difere em níveis de indireção de 'Grafo *'
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(332,22): warning C4024: 'criarAresta': tipos diferentes para parâmetro formal e real 1
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(333,31): warning C4047: 'função': 'Grafo' difere em níveis de indireção de 'Grafo *'
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(333,22): warning C4024: 'criarAresta': tipos diferentes para parâmetro formal e real 1
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(345,35): warning C4047: 'função': 'Grafo' difere em níveis de indireção de 'Grafo *'
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(345,26): warning C4024: 'listarAdjacentes': tipos diferentes para parâmetro formal e real 1
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(353,28): warning C4047: 'função': 'Grafo' difere em níveis de indireção de 'Grafo *'
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(353,19): warning C4024: 'salvarGrafo': tipos diferentes para parâmetro formal e real 1
 C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(382,40): warning C4047: '=': 'Cliente *' difere em níveis de indireção de 'int'
 C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(393,40): warning C4047: '=': 'Cliente *' difere em níveis de indireção de 'int'
 C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(412,40): warning C4047: '=': 'Cliente *' difere em níveis de indireção de 'int'

@@ -232,7 +232,7 @@ Grafo* lerGrafo()
         while (!feof(fp))
         {
             fscanf(fp, "%d;%[^;]\n", &id, geo);
-            criarVertice(grafo, id, geo);
+            criarVertice(&grafo, id, geo);
         }
         fclose(fp);
     }

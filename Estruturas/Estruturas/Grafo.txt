@@ -1,2 +1,2 @@
-2;leiga.telha.valorizo;
-1;safra.trenó.massas;
+5;massas.movam.sapato;
+4;clarinetistas.acha.papéis;
