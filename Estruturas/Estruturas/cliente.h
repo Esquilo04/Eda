@@ -24,7 +24,6 @@ int salvarCliente(Cliente* inicio);
 Cliente* lerCliente(inicio);
 Cliente* adicionarSaldo(Cliente* inicio, int id, int saldo);
 Cliente* removerSaldo(Cliente* inicio, int id, int saldo);
-int lerMaiorIdCliente();
 int lerIdCliente(Cliente* inicio, char username[]);
 int lerSaldoCliente(Cliente* inicio, int id);
 int lerIdDisponivel(Cliente* inicio);

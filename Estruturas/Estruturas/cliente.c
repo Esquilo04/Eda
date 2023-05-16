@@ -253,24 +253,6 @@ Cliente* removerSaldo(Cliente* inicio, int id, int saldo)
 	}
 }
 
-int lerMaiorIdCliente()
-{
-	int id, maiorId = 0;
-	FILE* fp = fopen("clientes.txt", "r");
-	if (fp != NULL)
-	{
-		while (fscanf(fp, "%d", &id) == 1)
-		{
-			if (id > maiorId)
-			{
-				maiorId = id;
-			}
-		}
-		fclose(fp);
-	}
-	return maiorId;
-}
-
 int lerIdDisponivel(Cliente* inicio)
 {
 	int aux=0;

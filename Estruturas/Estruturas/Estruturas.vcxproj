@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="cliente.c" />
     <ClCompile Include="gestor.c" />
+    <ClCompile Include="grafo.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="meio.c" />
     <ClCompile Include="registos.c" />
@@ -136,6 +137,7 @@
   <ItemGroup>
     <ClInclude Include="cliente.h" />
     <ClInclude Include="gestor.h" />
+    <ClInclude Include="grafo.h" />
     <ClInclude Include="meio.h" />
     <ClInclude Include="registos.h" />
   </ItemGroup>

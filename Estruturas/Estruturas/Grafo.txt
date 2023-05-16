@@ -1,0 +1,2 @@
+2;leiga.telha.valorizo;
+1;safra.trenó.massas;

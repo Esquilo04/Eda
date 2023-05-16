@@ -30,6 +30,9 @@
     <ClCompile Include="registos.c">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
+    <ClCompile Include="grafo.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="meio.h">
@@ -42,6 +45,9 @@
       <Filter>Arquivos de Origem</Filter>
     </ClInclude>
     <ClInclude Include="registos.h">
+      <Filter>Arquivos de Origem</Filter>
+    </ClInclude>
+    <ClInclude Include="grafo.h">
       <Filter>Arquivos de Origem</Filter>
     </ClInclude>
   </ItemGroup>

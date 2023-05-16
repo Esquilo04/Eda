@@ -3,11 +3,12 @@
 #include <string.h>
 #include <stdlib.h>
 #include <math.h>
-#include <conio.h>
+//#include <conio.h>
 
 #include "cliente.h"
 #include "gestor.h"
 #include "meio.h"
+#include "grafo.h"
 
 int idLoginCliente = 0;
 int menulogin()
@@ -49,6 +50,9 @@ int menuGestorGestores()
 	printf("2 - Remover gestor\n");
 	printf("3 - Alterar dados de um gestor\n");
 	printf("4 - Listar gestores na consola\n");
+	printf("5 - Adicionar vertice (rua) a um grafo\n");
+	printf("6 - Adicionar peso (distancia) entre dois vertices\n");
+	printf("7 - Listar adjacentes e peso de um vertice\n");
 	printf("9 - Voltar ao menu.\n");
 	scanf("%d", &opcao);
 	return(opcao);
@@ -81,19 +85,25 @@ int menuGestorClientes()
 	printf("3 - Listar clientes na consola\n");
 	printf("4 - Adicionar saldo\n");
 	printf("5 - Alterar determinado dado de um cliente\n");
+	printf("6 - Adicionar cliente a um vertice\n");
+	printf("7 - Listar clientes por rua\n");
 	printf("9 - Voltar ao menu\n");
 	scanf("%d", &op);
 	return (op);
 }
 
 
-void clear()
+void clearr()
 {
-	system("@cls || clear");
+	printf("\033[2J\033[H");
+
 }
 
 int main()
 {
+	Grafo guimaraes = NULL;
+//	guimaraes = lerGrafo();
+
 	Cliente* cliente = NULL;
 	cliente = lerCliente();
 	int idCliente, contactoCliente, nifCliente, idRemover, idLoginCliente;;
@@ -119,7 +129,7 @@ int main()
 
 		if (cargo == 2)
 		{
-			clear();
+			clearr();
 			int opcao2;
 			do {
 				printf("O que deseja fazer?\n");
@@ -130,8 +140,7 @@ int main()
 				if (opcao2 == 1)
 				{
 					cliente = lerCliente();
-					clear();
-					//idCliente = lerMaiorIdCliente() + 1;
+					clearr();
 					idCliente = lerIdDisponivel(cliente);
 					idLoginCliente = idCliente;
 					printf("Escreva o seu nome.\n");
@@ -151,11 +160,11 @@ int main()
 					scanf("%d", &saldo);
 					cliente = adicionarCliente(cliente, idCliente, nomeCliente, username, password, contactoCliente, nifCliente, morada, saldo);
 					salvarCliente(cliente);
-					clear();
+					clearr();
 				}
 				else if (opcao2 == 2)
 				{
-					clear();
+					clearr();
 					meio = lerMeio();
 					char username1[50];
 					printf("Qual e o seu nome de utilizador?\n");
@@ -165,7 +174,7 @@ int main()
 
 					if (loginCliente(cliente, username1, password) == 1)
 					{
-						clear();
+						clearr();
 						int opcao5;
 						printf("Login efetuado com sucesso.\n");
 						idLoginCliente = lerIdCliente(cliente, username1);
@@ -178,18 +187,18 @@ int main()
 								cliente = lerCliente();
 								saldo = lerSaldoCliente(cliente, idLoginCliente);
 								int auxx;
-								clear();
+								clearr();
 								mostrarMeiosDisponiveis(meio);
 								printf("Qual o id do meio que deseja reservar?\n");
 								scanf("%d", &idMeio);
-								clear();
+								clearr();
 								meio = reservarMeio(meio, cliente, idMeio, saldo, idLoginCliente);
 								int salvarmeio(meio);
 								salvarCliente(cliente);
 							}
 							if (opcao5 == 2)
 							{
-								clear();
+								clearr();
 								alterarDadosCliente(cliente, idLoginCliente);
 								salvarCliente(cliente);
 							}
@@ -197,46 +206,46 @@ int main()
 							{
 								printf("Quanto saldo pretende adicionar?\n");
 								scanf("%d", &saldo);
-								clear();
+								clearr();
 								cliente = adicionarSaldo(cliente, idLoginCliente, saldo);
 								salvarCliente(cliente);
 							}
 							if (opcao5 == 4)
 							{
-								clear();
+								clearr();
 								meio = lerMeio();
 								mostrarMeiosReservados(meio, idLoginCliente);
 								printf("\n\nQual o id do meio que deseja entregar?\n");
 								scanf("%d", &idMeio);
-								clear();
+								clearr();
 								meio = entregarMeio(meio, idMeio, idLoginCliente);
 							}
 							else if (opcao5 == 9)
 							{
-								clear();
+								clearr();
 							}
 						} while (opcao5 != 9);
 					}
 					else {
-						clear();
+						clearr();
 						printf("\nLogin incorreto.\n\n");
 					}
 				}
 				else if (opcao2 == 9)
 				{
-					clear();
+					clearr();
 				}
 			} while (opcao2 != 9);
 		}
 		else if (cargo == 1)
 		{
-			clear();
+			clearr();
 			gestor = lerGestor();
 			printf("Qual e o seu nome de utilizador?\n");
 			scanf("%s", username);
 			printf("Qual e a sua password?\n");
 			scanf("%s", password);
-			clear();
+			clearr();
 			if (loginGestor(gestor, username, password) == 1)
 			{
 				int opcao;
@@ -247,10 +256,10 @@ int main()
 					printf("3 - Gerir dados dos meios.\n");
 					printf("9 - Voltar ao menu.\n");
 					scanf("%d", &opcao);
-					clear();
+					clearr();
 					if (opcao == 1)
 					{
-						clear();
+						clearr();
 						int opcao2;
 						do {
 							opcao2 = menuGestorGestores();
@@ -265,7 +274,7 @@ int main()
 								scanf("%d", &contactoGestor);
 								printf("Qual e o seu NIF?\n");
 								scanf("%d", &nifGestor);
-								clear();
+								clearr();
 								gestor = adicionarGestor(gestor, idGestor, nomeGestor, passGestor, contactoGestor, nifGestor);
 							}
 							else if (opcao2 == 2)
@@ -274,7 +283,7 @@ int main()
 								mostrarGestor(gestor);
 								printf("Qual o id do gestor que pretende remover?\n");
 								scanf("%d", &idGestor);
-								clear();
+								clearr();
 								gestor = removerGestor(gestor, idGestor);
 							}
 							else if (opcao2 == 3)
@@ -283,20 +292,65 @@ int main()
 								mostrarGestor(gestor);
 								printf("Qual e o id?\n");
 								scanf("%d", &idGestor);
-								clear();
+								clearr();
 								alterarDadosGestor(gestor, idGestor);
 							}
 							else if (opcao2 == 4)
 							{
-								clear();
+								clearr();
 								mostrarGestor(gestor);
+							}
+							else if (opcao2 == 5)
+							{
+								clearr();
+								int id;
+								char geo[50], c;
+								do
+								{
+									printf("Qual o id do vertice (rua)?\n");
+									scanf("%d", &id);
+									geocodigo(geo);
+									criarVertice(&guimaraes, id, geo);
+									getchar(); //limpar memoria
+									printf("Pretende adicionar mais vertices (ruas) (s/n)?\n");
+									scanf("%c", &c);
+								} while (c != 'n');
+							}
+							else if (opcao2 == 6)
+							{
+								clearr();
+								int id, id2, peso;
+								char c;
+								do
+								{
+									printf("Qual o id do primeiro vertice (rua)?\n");
+									scanf("%d", &id);
+									printf("Qual o id do segundo vertice (rua)?\n");
+									scanf("%d", &id2);
+									printf("Qual o peso (distancia) entre eles?\n");
+									scanf("%d", &peso);
+									criarAresta(guimaraes, id, id2, peso);
+									criarAresta(guimaraes, id2, id, peso); //cria o percurso inverso
+									getchar();
+									printf("Pretende continuar (s/n)?\n");
+									scanf("%c", &c);
+								} while (c != 'n');
+							}
+							else if (opcao2 == 7)
+							{
+								clearr();
+								int id;
+								printf("Qual o id do vertice?\n");
+								scanf("%d", &id);
+								listarAdjacentes(guimaraes, id);
 							}
 							else if (opcao2 == 9)
 							{
-								clear();
+								clearr();
 							}
 						} while (opcao2 != 9);
 						salvarGestor(gestor);
+						salvarGrafo(guimaraes);
 					}
 					else if (opcao == 2)
 					{
@@ -304,10 +358,11 @@ int main()
 						do {
 						opcao3 = menuGestorClientes();
 						cliente = lerCliente(cliente);
-						clear();
+						//clear();
 						if (opcao3 == 1)
 						{
-							idCliente = lerMaiorIdCliente() + 1;
+							clearr();
+							idCliente = lerIdDisponivel(cliente);
 							printf("Qual o nome do cliente?\n");
 							scanf("%s", nomeCliente);
 							printf("Qual e o nome de usuario do cliente?\n");
@@ -322,36 +377,37 @@ int main()
 							scanf("%s", morada);
 							printf("Quanto saldo pretende adicionar na conta?\n");
 							scanf("%d", &saldo);
-							clear();
+							clearr();
 							cliente = adicionarCliente(cliente, idCliente, nomeCliente, username, password, contactoCliente, nifCliente, morada, saldo);
 							cliente = salvarCliente(cliente);
 						}
 						else if (opcao3 == 2)
 						{
+							clearr();
 							printf("Aqui estao os dados dos cliente:\n\n");
 							mostrarCliente(cliente);
 							printf("Introduza o id do cliente a remover: ");
 							scanf("%d", &opcaoid);
-							clear();
+							clearr();
 							cliente = removerCliente(cliente, opcao);
 							cliente = salvarCliente(cliente);
 						}
 						else if (opcao3 == 3)
 						{
 							cliente = lerCliente();
-							clear();
+							clearr();
 							mostrarCliente(cliente);
 						}
 						else if (opcao3 == 4)
 						{
-							clear();
+							clearr();
 							printf("Aqui estao os dados dos cliente:\n\n");
 							mostrarCliente(cliente);
 							printf("Qual o id do cliente que deseja adicionar saldo?\n");
 							scanf("%d", &opcaoid);
 							printf("Quanto saldo deseja adicionar?\n");
 							scanf("%d", &opcaosaldo);
-							clear();
+							clearr();
 							cliente = adicionarSaldo(cliente, opcaoid, opcaosaldo);
 							cliente = salvarCliente(cliente);
 						}
@@ -361,20 +417,20 @@ int main()
 							mostrarCliente(cliente);
 							printf("Qual o id do cliente que deseja alterar os dados?\n");
 							scanf("%d", &opcaosaldo);
-							clear();
+							clearr();
 							alterarDadosCliente(cliente, opcaosaldo);
 							cliente = salvarCliente(cliente);
 						}
 						else if (opcao3 == 9)
 						{
-							clear();
+							clearr();
 						}
 					} while (opcao3 != 9);
 
 					}
 					else if (opcao == 3)
 					{
-						clear();
+						clearr();
 						int opcao4;
 						do {
 							opcao4 = menuGestorMeios();
@@ -387,58 +443,58 @@ int main()
 								printf("Qual o tipo do meio?\n");
 								scanf("%s", meio_);
 								printf("Qual e a localizacao do meio?\n");
-								scanf("%s", loc);
+								geocodigo(loc);
 								printf("Quanta bateria tem o meio?\n");
 								scanf("%d", &bat);
 								printf("Qual e a autonomia do meio?\n");
 								scanf("%d", &aut);
 								printf("Qual e o custo do meio?\n");
 								scanf("%d", &cus);
-								clear();
+								clearr();
 								meio = lerMeio();
 								meio = adicionarMeio(meio, idMeio, meio_, loc, bat, aut, cus, 0, 0);
 								meio = salvarMeio(meio);
 							}
 							else if (opcao4 == 2)
 							{
-								clear();
+								clearr();
 								printf("Aqui estao os dados dos meios:\n\n");
 								mostrarMeio(meio);
 								printf("Introduza o id do meio a remover: ");
 								scanf("%d", &opcaoid2);
-								clear();
+								clearr();
 								meio = lerMeio();
 								meio = removerMeio(meio, opcaoid2);
 								meio = salvarMeio(meio);
 							}
 							else if (opcao4 == 3)
 							{
-								clear();
+								clearr();
 								mostrarMeio(meio);
 							}
 							else if (opcao4 == 4)
 							{
-								clear();
+								clearr();
 								listarPorAutonomia(meio);
 							}
 							else if (opcao4 == 5)
 							{
-								clear();
+								clearr();
 								char loc[100];
 								printf("Qual a localizacao que deseja procurar meios disponiveis?\n");
 								scanf("%s", loc);
-								clear();
+								clearr();
 								mostrarPorLocalizacao(meio, loc);
 							}
 							else if (opcao4 == 9)
 							{
-								clear();
+								clearr();
 							}
 						} while (opcao4 != 9);
 					}
 					else if (opcao == 9)
 					{
-						clear();
+						clearr();
 					}
 				} while (opcao != 9);
 			}
