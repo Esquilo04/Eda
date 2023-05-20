@@ -1,3 +1,3 @@
-1;ola;ola;ola;1;1;rua;118
-2;nuno;nuno;nuno;1;22;ruaa;914
 3;teste;teste;teste;2;-858993460;w;2
+2;nuno;nuno;nuno;1;22;ruaa;914
+1;ola;ola;ola;1;1;rua;118

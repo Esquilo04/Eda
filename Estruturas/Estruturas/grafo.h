@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "meio.h";
 
 
 typedef struct registo3
@@ -27,18 +28,19 @@ typedef struct registo1
 	int id; // geocódigo what3words
 	char geo[50];
 	Adjacente adjacentes;
-	Meios meios; // Lista ligada com os códigos dos meios de transporte existente
+	Meios meio; // Lista ligada com os códigos dos meios de transporte existente
 	Clientes clientes;
 	struct registo1* seguinte;
 } *Grafo;
 
-int criarVertice(Grafo* g, int Id, char geo[]);
+int criarVertice(Grafo* g, int id, char geo[], int id2, int peso);
 int criarAresta(Grafo g, int vOrigem, int vDestino, int peso);
 int inserirMeio(Grafo g, int id, int codigoMeio);
 int inserircliente(Grafo g, int id, int codigoclient);
 void listarmeios(Grafo g, int codigomeio);
 void listarAdjacentes(Grafo g, int id);
 int existeVertice(Grafo g, int id);
-char geocodigo(char localizacao[]);
-int salvarGrafo(Grafo g);
+char geocodigo(char localizacao[], int o);
+void salvarGrafo(Grafo g);
 Grafo* lerGrafo();
+int InserirMeio(Grafo g, Meio* inicio, int id, int codigoMeio);

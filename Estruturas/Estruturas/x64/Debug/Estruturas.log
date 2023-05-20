@@ -1,22 +1,16 @@
-﻿  main.c
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(249,26): warning C4133: 'função': tipos incompatíveis - de 'Gestor *' para 'char *'
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(249,38): warning C4020: 'loginGestor': muitos parâmetros reais
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(313,33): warning C4047: 'função': 'Grafo *' difere em níveis de indireção de 'Grafo **'
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(313,23): warning C4024: 'criarVertice': tipos diferentes para parâmetro formal e real 1
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(332,31): warning C4047: 'função': 'Grafo' difere em níveis de indireção de 'Grafo *'
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(332,22): warning C4024: 'criarAresta': tipos diferentes para parâmetro formal e real 1
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(333,31): warning C4047: 'função': 'Grafo' difere em níveis de indireção de 'Grafo *'
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(333,22): warning C4024: 'criarAresta': tipos diferentes para parâmetro formal e real 1
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(345,35): warning C4047: 'função': 'Grafo' difere em níveis de indireção de 'Grafo *'
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(345,26): warning C4024: 'listarAdjacentes': tipos diferentes para parâmetro formal e real 1
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(353,28): warning C4047: 'função': 'Grafo' difere em níveis de indireção de 'Grafo *'
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(353,19): warning C4024: 'salvarGrafo': tipos diferentes para parâmetro formal e real 1
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(382,40): warning C4047: '=': 'Cliente *' difere em níveis de indireção de 'int'
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(393,40): warning C4047: '=': 'Cliente *' difere em níveis de indireção de 'int'
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(412,40): warning C4047: '=': 'Cliente *' difere em níveis de indireção de 'int'
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(422,40): warning C4047: '=': 'Cliente *' difere em níveis de indireção de 'int'
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(456,32): warning C4047: '=': 'Meio *' difere em níveis de indireção de 'int'
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(468,32): warning C4047: '=': 'Meio *' difere em níveis de indireção de 'int'
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(109,46): warning C4101: 'idRemover': variável local não referenciada
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\main.c(189,13): warning C4101: 'auxx': variável local não referenciada
+﻿  grafo.c
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\grafo.h(3,10): warning C4067: tokens inesperados após diretiva de pré-processador - esperado um newline
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\grafo.c(232,28): warning C4047: 'return': 'char' difere em níveis de indireção de 'char *'
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\grafo.c(237,28): warning C4047: 'return': 'char' difere em níveis de indireção de 'char *'
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\grafo.c(242,28): warning C4047: 'return': 'char' difere em níveis de indireção de 'char *'
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\grafo.c(247,28): warning C4047: 'return': 'char' difere em níveis de indireção de 'char *'
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\grafo.c(252,28): warning C4047: 'return': 'char' difere em níveis de indireção de 'char *'
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\grafo.c(257,28): warning C4047: 'return': 'char' difere em níveis de indireção de 'char *'
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\grafo.c(262,28): warning C4047: 'return': 'char' difere em níveis de indireção de 'char *'
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\grafo.c(267,28): warning C4047: 'return': 'char' difere em níveis de indireção de 'char *'
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\grafo.c(272,28): warning C4047: 'return': 'char' difere em níveis de indireção de 'char *'
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\grafo.c(338,36): warning C4047: 'função': 'Grafo *' difere em níveis de indireção de 'Grafo **'
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\grafo.c(338,30): warning C4024: 'criarVertice': tipos diferentes para parâmetro formal e real 1
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\grafo.c(136): warning C4715: 'InserirMeio': nem todos os caminhos de controle retornam um valor
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\grafo.c(98): warning C4715: 'criarAresta': nem todos os caminhos de controle retornam um valor
   Estruturas.vcxproj -> C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\x64\Debug\Estruturas.exe

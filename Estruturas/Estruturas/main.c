@@ -307,10 +307,14 @@ int main()
 								char geo[50], c;
 								do
 								{
+									int o;
 									printf("Qual o id do vertice (rua)?\n");
 									scanf("%d", &id);
-									geocodigo(geo);
-									criarVertice(&guimaraes, id, geo);
+									printf("Qual a localizacao atribuida ao vertice?");
+									printf("1 - Castelo\n2 - Hospital\n3 - Shopping\n4 - Penha\n5 - Mercado Municipal\n6 - Rua Paio Galvao\n7 - Estatua D. Afonso Henriques\n8 - Estacao Ferroviria\n9 - Largo do Toural\n");
+									scanf("%d", &o);
+									geocodigo(geo, o);
+									criarVertice(&guimaraes, id, geo, 0, 0);
 									getchar(); //limpar memoria
 									printf("Pretende adicionar mais vertices (ruas) (s/n)?\n");
 									scanf("%c", &c);
@@ -356,76 +360,76 @@ int main()
 					{
 						int opcaoid, opcaosaldo, opcao3;
 						do {
-						opcao3 = menuGestorClientes();
-						cliente = lerCliente(cliente);
-						//clear();
-						if (opcao3 == 1)
-						{
-							clearr();
-							idCliente = lerIdDisponivel(cliente);
-							printf("Qual o nome do cliente?\n");
-							scanf("%s", nomeCliente);
-							printf("Qual e o nome de usuario do cliente?\n");
-							scanf("%s", username);
-							printf("Qual e a password?\n");
-							scanf("%s", password);
-							printf("Qual e o contacto?\n");
-							scanf("%d", &contactoCliente);
-							printf("Qual e o NIF?\n");
-							scanf("%d", &nifCliente);
-							printf("Introduza a morada do cliente.\n");
-							scanf("%s", morada);
-							printf("Quanto saldo pretende adicionar na conta?\n");
-							scanf("%d", &saldo);
-							clearr();
-							cliente = adicionarCliente(cliente, idCliente, nomeCliente, username, password, contactoCliente, nifCliente, morada, saldo);
-							cliente = salvarCliente(cliente);
-						}
-						else if (opcao3 == 2)
-						{
-							clearr();
-							printf("Aqui estao os dados dos cliente:\n\n");
-							mostrarCliente(cliente);
-							printf("Introduza o id do cliente a remover: ");
-							scanf("%d", &opcaoid);
-							clearr();
-							cliente = removerCliente(cliente, opcao);
-							cliente = salvarCliente(cliente);
-						}
-						else if (opcao3 == 3)
-						{
-							cliente = lerCliente();
-							clearr();
-							mostrarCliente(cliente);
-						}
-						else if (opcao3 == 4)
-						{
-							clearr();
-							printf("Aqui estao os dados dos cliente:\n\n");
-							mostrarCliente(cliente);
-							printf("Qual o id do cliente que deseja adicionar saldo?\n");
-							scanf("%d", &opcaoid);
-							printf("Quanto saldo deseja adicionar?\n");
-							scanf("%d", &opcaosaldo);
-							clearr();
-							cliente = adicionarSaldo(cliente, opcaoid, opcaosaldo);
-							cliente = salvarCliente(cliente);
-						}
-						else if (opcao3 == 5)
-						{
-							printf("Aqui estao os dados dos cliente:\n\n");
-							mostrarCliente(cliente);
-							printf("Qual o id do cliente que deseja alterar os dados?\n");
-							scanf("%d", &opcaosaldo);
-							clearr();
-							alterarDadosCliente(cliente, opcaosaldo);
-							cliente = salvarCliente(cliente);
-						}
-						else if (opcao3 == 9)
-						{
-							clearr();
-						}
-					} while (opcao3 != 9);
+							opcao3 = menuGestorClientes();
+							cliente = lerCliente(cliente);
+							//clear();
+							if (opcao3 == 1)
+							{
+								clearr();
+								idCliente = lerIdDisponivel(cliente);
+								printf("Qual o nome do cliente?\n");
+								scanf("%s", nomeCliente);
+								printf("Qual e o nome de usuario do cliente?\n");
+								scanf("%s", username);
+								printf("Qual e a password?\n");
+								scanf("%s", password);
+								printf("Qual e o contacto?\n");
+								scanf("%d", &contactoCliente);
+								printf("Qual e o NIF?\n");
+								scanf("%d", &nifCliente);
+								printf("Introduza a morada do cliente.\n");
+								scanf("%s", morada);
+								printf("Quanto saldo pretende adicionar na conta?\n");
+								scanf("%d", &saldo);
+								clearr();
+								cliente = adicionarCliente(cliente, idCliente, nomeCliente, username, password, contactoCliente, nifCliente, morada, saldo);
+								cliente = salvarCliente(cliente);
+							}
+							else if (opcao3 == 2)
+							{
+								clearr();
+								printf("Aqui estao os dados dos cliente:\n\n");
+								mostrarCliente(cliente);
+								printf("Introduza o id do cliente a remover: ");
+								scanf("%d", &opcaoid);
+								clearr();
+								cliente = removerCliente(cliente, opcao);
+								cliente = salvarCliente(cliente);
+							}
+							else if (opcao3 == 3)
+							{
+								cliente = lerCliente();
+								clearr();
+								mostrarCliente(cliente);
+							}
+							else if (opcao3 == 4)
+							{
+								clearr();
+								printf("Aqui estao os dados dos cliente:\n\n");
+								mostrarCliente(cliente);
+								printf("Qual o id do cliente que deseja adicionar saldo?\n");
+								scanf("%d", &opcaoid);
+								printf("Quanto saldo deseja adicionar?\n");
+								scanf("%d", &opcaosaldo);
+								clearr();
+								cliente = adicionarSaldo(cliente, opcaoid, opcaosaldo);
+								cliente = salvarCliente(cliente);
+							}
+							else if (opcao3 == 5)
+							{
+								printf("Aqui estao os dados dos cliente:\n\n");
+								mostrarCliente(cliente);
+								printf("Qual o id do cliente que deseja alterar os dados?\n");
+								scanf("%d", &opcaosaldo);
+								clearr();
+								alterarDadosCliente(cliente, opcaosaldo);
+								cliente = salvarCliente(cliente);
+							}
+							else if (opcao3 == 9)
+							{
+								clearr();
+							}
+						} while (opcao3 != 9);
 
 					}
 					else if (opcao == 3)
@@ -439,11 +443,14 @@ int main()
 
 							if (opcao4 == 1)
 							{
+								int o;
 								idMeio = lerMaiorIdMeio() + 1;
 								printf("Qual o tipo do meio?\n");
 								scanf("%s", meio_);
 								printf("Qual e a localizacao do meio?\n");
-								geocodigo(loc);
+								printf("1 - Castelo\n2 - Hospital\n3 - Shopping\n4 - Penha\n5 - Mercado Municipal\n6 - Rua Paio Galvao\n7 - Estatua D. Afonso Henriques\n8 - Estacao Ferroviria\n9 - Largo do Toural\n");
+								scanf("%d", &o);
+								geocodigo(loc, o);
 								printf("Quanta bateria tem o meio?\n");
 								scanf("%d", &bat);
 								printf("Qual e a autonomia do meio?\n");
@@ -451,8 +458,8 @@ int main()
 								printf("Qual e o custo do meio?\n");
 								scanf("%d", &cus);
 								clearr();
-								meio = lerMeio();
 								meio = adicionarMeio(meio, idMeio, meio_, loc, bat, aut, cus, 0, 0);
+								InserirMeio(guimaraes, meio, o, idMeio);
 								meio = salvarMeio(meio);
 							}
 							else if (opcao4 == 2)
