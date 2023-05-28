@@ -4,32 +4,13 @@
 
 #include "grafo.h"
 #include "meio.h"
+#define INFINITO 99999999
 
 
-int criarVertice(Grafo* g, int id, char geo[], int id2, int peso)
+int criarVertice(Grafo* g, int id, char geo[])
 {
     Grafo novo = *g;
     Adjacente adj;
-
-    // Verifica se o vértice com o mesmo ID já existe
-    while (novo != NULL)
-    {
-        if (novo->id == id)
-        {
-            // Atualiza os valores da aresta existente
-            adj = novo->adjacentes;
-            while (adj != NULL)
-            {
-                if (adj->id == id2)
-                {
-                    adj->peso = peso;
-                    return 1;
-                }
-                adj = adj->seguinte;
-            }
-        }
-        novo = novo->seguinte;
-    }
 
     // Cria um novo vértice se não existir
     novo = malloc(sizeof(struct registo1));
@@ -42,31 +23,9 @@ int criarVertice(Grafo* g, int id, char geo[], int id2, int peso)
         novo->clientes = NULL;
         novo->seguinte = *g;
         *g = novo;
-
-        // Cria um novo vértice adjacente
-        adj = malloc(sizeof(struct registo2));
-        if (adj != NULL)
-        {
-            adj->id = id2;
-            adj->peso = peso;
-            adj->seguinte = novo->adjacentes;
-            novo->adjacentes = adj;
-            return 1;
-        }
-        else
-        {
-            printf("Erro ao alocar memória para vértice adjacente.\n");
-            return 0;
-        }
-    }
-    else
-    {
-        printf("Erro ao alocar memória para vértice.\n");
-        return 0;
+        return 1;
     }
 }
-
-
 
 int criarAresta(Grafo g, int vOrigem, int vDestino, int peso)
 {
@@ -97,7 +56,7 @@ int criarAresta(Grafo g, int vOrigem, int vDestino, int peso)
     else return(0);
 }
 
-int InserirMeio(Grafo g, Meio* inicio, int id, int codigoMeio)
+int inserirMeio(Grafo g, Meio* inicio, int id, int codigoMeio)
 {
     Meio* meio = inicio;
     while (g != NULL)
@@ -122,10 +81,7 @@ int InserirMeio(Grafo g, Meio* inicio, int id, int codigoMeio)
                         return(0);
                     }
                 }
-                else
-                {
-                    meio = meio->seguinte;
-                }
+                 meio = meio->seguinte;
             }
         }
         else
@@ -135,17 +91,31 @@ int InserirMeio(Grafo g, Meio* inicio, int id, int codigoMeio)
     }
 }
 
-int inserircliente(Grafo g, int id, int codigoclient)
+int InserirClientes(Grafo g, Cliente* inicio, int idvertice, int idCliente)
 {
-    while ((g != NULL) && (g->id == codigoclient))
-        g = g->seguinte;
-    if (g == NULL) return(0);
-    else {
-        Clientes novo = malloc(sizeof(struct registo3));
-        novo->codigo = codigoclient;
-        novo->seguinte = g->clientes;
-        g->clientes = novo;
-        return(1);
+    Cliente* cliente = inicio;
+    while (g != NULL)
+    {
+        if (g->id == idvertice)
+        {
+            while (cliente != NULL)
+            {
+                if (cliente->id == idCliente)
+                {
+                        Clientes novo = malloc(sizeof(struct registo4));
+                        novo->codigo = idCliente;
+                        novo->seguinte = g->clientes;
+                        g->meio = novo;
+                        return(1);
+
+                }
+                cliente = cliente->seguinte;
+            }
+        }
+        else
+        {
+            g = g->seguinte;
+        }
     }
 }
 
@@ -174,27 +144,24 @@ void listarAdjacentes(Grafo g, int id)
     Adjacente adj;
     int aux = 0;
 
-    // Encontra o vértice com o ID fornecido
     while (atual != NULL)
     {
         if (atual->id == id)
         {
             adj = atual->adjacentes;
 
-            // Verifica se há vértices adjacentes
             if (adj == NULL)
             {
                 printf("O vertice %d nao possui vertices adjacentes.\n", id);
                 return;
             }
 
-            // Itera pelos vértices adjacentes e imprime seus IDs e pesos
             printf("Vertices adjacentes de %d:\n", id);
             while (adj != NULL)
             {
-                if (adj->id != 0 && adj->peso != 0)
+                if (adj->id != 0)
                 {
-                    printf("ID: %d, Peso: %d\n", adj->id, adj->peso);
+                    printf("ID: %d  Peso: %d\n", adj->id, adj->peso);
                     aux++;
                 }
                 adj = adj->seguinte;
@@ -205,23 +172,26 @@ void listarAdjacentes(Grafo g, int id)
             }
             return;
         }
-
         atual = atual->seguinte;
     }
 
-    // Se o vértice com o ID fornecido não for encontrado
-    printf("O vertice %d não foi encontrado.\n", id);
+    printf("O vertice %d nao foi encontrado.\n", id);
 }
-
 
 int existeVertice(Grafo g, int id)
 {
     while (g != NULL)
     {
-        if (g->id == id) return(1);
-        else g = g->seguinte;
+        if (g->id == id)
+        {
+            return(1);
+        }
+        else
+        {
+            g = g->seguinte;
+        }
     }
-    return(0);
+    printf("teste");
 }
 
 char geocodigo(char localizacao[], int o)
@@ -315,6 +285,25 @@ void salvarGrafo(Grafo g)
     }
 }
 
+int existeVertice2(Grafo g, int id)
+{
+    int aux=10;
+
+    while (g != NULL)
+    {
+        if (g->id == id)
+        {
+            aux = 11;
+            return(aux);
+        }
+        else
+        {
+            g = g->seguinte;
+        }
+    }
+    return aux;
+}
+
 Grafo* lerGrafo()
 {
     FILE* fp;
@@ -329,26 +318,48 @@ Grafo* lerGrafo()
         while (!feof(fp))
         {
             fscanf(fp, "%d;%[^;];%d;%d\n", &id, geo, &id2, &peso);
-            //if (id2 == 0 && peso == 0)
-            //{
-           //     criarVertice(&grafo, id, geo, 0, 0);
-            //}
-            //else
-            //{
-                criarVertice(&grafo, id, geo, id2, peso);
-                //criarVertice(&grafo, id2, geo, id, peso);
-                //criarAresta(grafo, id, id2, peso);
-            //}
+            if (id2 == 0 && peso == 0)
+            {
+                criarVertice(&grafo, id, geo);
+            }
+            else
+            {
+                if (existeVertice2(grafo, id)==11)
+                {
+                    if (existeVertice2(grafo, id2)==11)
+                    {
+                        criarAresta(grafo, id, id2, peso);
+                    }
+                    else
+                    {
+                        criarVertice(&grafo, id2, geo);
+                        criarAresta(grafo, id, id2, peso);
+                    }
+                }
+                else
+                {
+                    if (existeVertice2(grafo, id2) == 11)
+                    {
+                        criarVertice(&grafo, id, geo);
+                        criarAresta(grafo, id, id2, peso);
+                    }
+                    else
+                    {
+                        criarVertice(&grafo, id, geo);
+                        criarVertice(&grafo, id2, geo);
+                        criarAresta(grafo, id, id2, peso);
+                    }
+                }
+            }
         }
         fclose(fp);
     }
     return(grafo);
 }
 
-
-/*void salvarConteudoDeVertice(Grafo g)
+void salvarMeiosPorId(Grafo g)
 {
-    Grafo g;
+    Meios meios;
     FILE* fp;
 
     fp = fopen("Vertice.txt", "w");
@@ -358,19 +369,41 @@ Grafo* lerGrafo()
     {
         while (g != NULL)
         {
-            adj = g->adjacentes;
-            if (adj == NULL)
-            {
-                fprintf(fp, "%d;%s;%d;%d\n", g->id, g->geo, id, peso);
-            }
-            else
-            {
-                while (adj != NULL)
-                {
-                    fprintf(fp, "%d;%s;%d;%d\n", g->id, g->geo, adj->id, adj->peso);
-                    adj = adj->seguinte;
+            meios = g->meio;
 
+                while (meios != NULL)
+                {
+                    fprintf(fp, "%d;%d\n", g->id, meios->codigo); 
+                    meios = meios->seguinte;
                 }
+            g = g->seguinte;
+        }
+        fclose(fp);
+    }
+    else
+    {
+        printf("O ficheiro esta corrompido!\n");
+    }
+}
+
+void salvarClientesPorId(Grafo g)
+{
+    Clientes clientes;
+    FILE* fp;
+
+    fp = fopen("Vertice.txt", "w");
+
+
+    if (fp != NULL)
+    {
+        while (g != NULL)
+        {
+            clientes = g->clientes;
+
+            while (clientes != NULL)
+            {
+                fprintf(fp, "%d;%d\n", g->id, clientes->codigo); 
+                clientes = clientes->seguinte;
             }
             g = g->seguinte;
         }
@@ -381,4 +414,24 @@ Grafo* lerGrafo()
         printf("O ficheiro esta corrompido!\n");
     }
 }
-*/
+
+Grafo* lerConteudoVertice(Grafo g, Meio* inicio)
+{
+    FILE* fp;
+    Meio* meio = inicio;
+
+    fp = fopen("Vertice.txt", "r");
+    int id=0, id2=0;
+
+    if (fp != NULL)
+    {
+        while (!feof(fp))
+        {
+            fscanf(fp, "%d;%d\n", &id, &id2);
+            inserirMeio(g, meio, id, id2);
+        }
+        fclose(fp);
+    }
+    return(g);
+}
+

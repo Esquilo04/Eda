@@ -19,4 +19,4 @@ Gestor* lerGestor();
 Gestor* removerGestor(Gestor* inicio, int id);
 void mostrarGestor(Gestor* inicio);
 int existeGestor(Gestor* inicio, int id);
-int lerMaiorIdGestor();
+int lerMaiorIdGestor(Gestor* inicio);

@@ -74,22 +74,17 @@ Meio* lerMeio()
 	return (meio);
 }
 
-int lerMaiorIdMeio()
+int lerIdMeioDisponivel(Meio* inicio)
 {
-	int id, maiorId = 0;
-	FILE* fp = fopen("Meios.txt", "r");
-	if (fp != NULL)
+	int aux = 1;
+	Meio* meio = inicio;
+
+	while (meio != NULL)
 	{
-		while (fscanf(fp, "%d", &id) == 1)
-		{
-			if (id > maiorId)
-			{
-				maiorId = id;
-			}
-		}
-		fclose(fp);
+		aux++;
+		meio = meio->seguinte;
 	}
-	return maiorId;
+	return aux;
 }
 
 Meio* removerMeio(Meio* inicio, int id)

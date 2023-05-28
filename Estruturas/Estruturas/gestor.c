@@ -192,20 +192,15 @@ Gestor* lerGestor()
 	return(gestor);
 }
 
-int lerMaiorIdGestor()
+int lerMaiorIdGestor(Gestor* inicio)
 {
-	int id, maiorId = 0;
-	FILE* fp = fopen("gestor.txt", "r");
-	if (fp != NULL)
+	int aux = 1;
+	Gestor* gestor = inicio;
+
+	while (gestor != NULL)
 	{
-		while (fscanf(fp, "%d", &id) == 1)
-		{
-			if (id > maiorId)
-			{
-				maiorId = id;
-			}
-		}
-		fclose(fp);
+		aux++;
+		gestor = gestor->seguinte;
 	}
-	return maiorId;
+	return aux;
 }

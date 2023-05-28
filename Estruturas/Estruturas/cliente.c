@@ -255,18 +255,15 @@ Cliente* removerSaldo(Cliente* inicio, int id, int saldo)
 
 int lerIdDisponivel(Cliente* inicio)
 {
-	int aux=0;
+	int aux = 1;
 	Cliente* cliente = inicio;
 
 	while (cliente != NULL)
 	{
-		if(cliente->id>aux)
-		{
-			aux = cliente->id;
-		}
+		aux++;
 		cliente = cliente->seguinte;
 	}
-	return ++aux;
+	return aux;
 }
 
 int lerSaldoCliente(Cliente* inicio, int id)

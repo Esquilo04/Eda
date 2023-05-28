@@ -35,6 +35,7 @@ int menuCliente()
 	printf("2 - Alterar determinado dado da conta\n");
 	printf("3 - Adicionar saldo na conta\n");
 	printf("4 - Entregar meio.\n");
+	printf("5 - Listar meios disponiveis numa determinada distancia.\n");
 	printf("9 - Voltar ao menu. \n");
 	scanf("%d", &opcao);
 	return (opcao);
@@ -96,7 +97,6 @@ int menuGestorClientes()
 void clearr()
 {
 	printf("\033[2J\033[H");
-
 }
 
 int main()
@@ -115,6 +115,9 @@ int main()
 	char nomeGestor[50], passGestor[50];
 	int idGestor, contactoGestor, nifGestor;
 	Meio* meio = NULL;
+	meio = lerMeio();
+
+	lerConteudoVertice(guimaraes, meio);
 
 	int idMeio;
 	char meio_[50], loc[50];
@@ -220,6 +223,24 @@ int main()
 								clearr();
 								meio = entregarMeio(meio, idMeio, idLoginCliente);
 							}
+							if (opcao5 == 5)
+							{
+								clearr();
+								int atual, destino, raio;
+								char meio[50];
+								printf("Qual a sua localizacao atual?\n");
+								printf("1 - Castelo\n2 - Hospital\n3 - Shopping\n4 - Penha\n5 - Mercado Municipal\n6 - Rua Paio Galvao\n7 - Estatua D. Afonso Henriques\n8 - Estacao Ferroviria\n9 - Largo do Toural\n");
+								scanf("%d", &atual);
+								printf("Para onde deseja ir?\n");
+								scanf("%d", &destino);
+								printf("Qual o tipo de meio que deseja efetuar procura?\n");
+								scanf("%s", meio);
+								printf("Qual o raio (em metros) que deseja procurar?\n");
+								scanf("%d", &raio);
+								geocodigo(loc, atual);
+								int num = numVertices;
+								teste(meio, loc, meio);
+							}
 							else if (opcao5 == 9)
 							{
 								clearr();
@@ -265,7 +286,7 @@ int main()
 							opcao2 = menuGestorGestores();
 							if (opcao2 == 1)
 							{
-								idGestor = lerMaiorIdGestor() + 1;
+								idGestor = lerMaiorIdGestor(gestor) + 1;
 								printf("Qual e o seu nome?\n");
 								scanf("%s", nomeGestor);
 								printf("Qual e a sua password?\n");
@@ -310,11 +331,11 @@ int main()
 									int o;
 									printf("Qual o id do vertice (rua)?\n");
 									scanf("%d", &id);
-									printf("Qual a localizacao atribuida ao vertice?");
+									printf("Qual a localizacao atribuida ao vertice?\n");
 									printf("1 - Castelo\n2 - Hospital\n3 - Shopping\n4 - Penha\n5 - Mercado Municipal\n6 - Rua Paio Galvao\n7 - Estatua D. Afonso Henriques\n8 - Estacao Ferroviria\n9 - Largo do Toural\n");
 									scanf("%d", &o);
 									geocodigo(geo, o);
-									criarVertice(&guimaraes, id, geo, 0, 0);
+									criarVertice(&guimaraes, id, geo);
 									getchar(); //limpar memoria
 									printf("Pretende adicionar mais vertices (ruas) (s/n)?\n");
 									scanf("%c", &c);
@@ -444,7 +465,7 @@ int main()
 							if (opcao4 == 1)
 							{
 								int o;
-								idMeio = lerMaiorIdMeio() + 1;
+								idMeio = lerIdMeioDisponivel(meio);
 								printf("Qual o tipo do meio?\n");
 								scanf("%s", meio_);
 								printf("Qual e a localizacao do meio?\n");
@@ -459,7 +480,7 @@ int main()
 								scanf("%d", &cus);
 								clearr();
 								meio = adicionarMeio(meio, idMeio, meio_, loc, bat, aut, cus, 0, 0);
-								InserirMeio(guimaraes, meio, o, idMeio);
+								inserirMeio(guimaraes, meio, o, idMeio);
 								meio = salvarMeio(meio);
 							}
 							else if (opcao4 == 2)
@@ -488,8 +509,11 @@ int main()
 							{
 								clearr();
 								char loc[100];
+								int o;
 								printf("Qual a localizacao que deseja procurar meios disponiveis?\n");
-								scanf("%s", loc);
+								printf("1 - Castelo\n2 - Hospital\n3 - Shopping\n4 - Penha\n5 - Mercado Municipal\n6 - Rua Paio Galvao\n7 - Estatua D. Afonso Henriques\n8 - Estacao Ferroviria\n9 - Largo do Toural\n");
+								scanf("%d", &o);
+								geocodigo(loc, o);
 								clearr();
 								mostrarPorLocalizacao(meio, loc);
 							}
@@ -508,5 +532,6 @@ int main()
 			else { printf("Login incorreto.\n"); }
 		}
 	} while (cargo != 0);
+	salvarMeiosPorId(guimaraes);
 	return(0);
 }

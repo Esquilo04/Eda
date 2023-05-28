@@ -20,7 +20,7 @@ void alterarDadosMeio(Meio* inicio, int id);
 int salvarMeio(Meio* inicio);
 Meio* lerMeio();
 void mostrarMeio(Meio* inicio);
-int lerMaiorIdMeio();
+int lerIdMeioDisponivel(Meio* inicio);
 Meio* reservarMeio(Meio* inicio, Cliente* inicioC, int id, int saldo, int idCliente);
 Meio* entregarMeio(Meio* inicio, int id, int idCliente);
 void ordenarPorAutonomia(Meio* inicio);
