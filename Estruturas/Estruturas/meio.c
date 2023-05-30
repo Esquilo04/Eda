@@ -4,6 +4,7 @@
 #include "registos.h"
 #include "meio.h"
 #include "cliente.h"
+#include "grafo.h"
 
 Cliente* adicionarSaldo(Cliente* inicio, int id, int saldo);
 
@@ -125,7 +126,9 @@ void mostrarMeio(Meio* inicio)
 	printf("\nLista dos meios.\n\n");
 	while (inicio != NULL)
 	{
-		printf("ID: %d\nMeio: %s\nLocalizacao: %s\nBateria: %d\nAutonomia: %d\nCusto: %d\nEstado: %d\n\n", inicio->id, inicio->meio, inicio->localizacao, inicio->bateria, inicio->autonomia, inicio->custo, inicio->reservado);
+		char loc[50];
+		obtergeocodigo(loc, inicio->localizacao);
+		printf("ID: %d\nMeio: %s\nLocalizacao: %s\nBateria: %d\nAutonomia: %d\nCusto: %d\nEstado: %d\n\n", inicio->id, inicio->meio, loc, inicio->bateria, inicio->autonomia, inicio->custo, inicio->reservado);
 		inicio = inicio->seguinte;
 	}
 }
@@ -137,7 +140,9 @@ void mostrarMeiosDisponiveis(Meio* inicio)
 	{
 		if (inicio->reservado == 0)
 		{
-			printf("ID: %d\nMeio: %s\nLocalizacao: %s\nBateria: %d\nAutonomia: %d\nCusto: %d\nEstado: Disponivel\n\n", inicio->id, inicio->meio, inicio->localizacao, inicio->bateria, inicio->autonomia, inicio->custo);
+			char loc[50];
+			obtergeocodigo(loc, inicio->localizacao);
+			printf("ID: %d\nMeio: %s\nLocalizacao: %s\nBateria: %d\nAutonomia: %d\nCusto: %d\nEstado: Disponivel\n\n", inicio->id, inicio->meio, loc, inicio->bateria, inicio->autonomia, inicio->custo);
 		}
 		inicio = inicio->seguinte;
 	}
@@ -152,7 +157,9 @@ void mostrarMeiosReservados(Meio* inicio, int idCliente)
 		{
 			if (inicio->idcliente == idCliente)
 			{
-				printf("ID: %d\nMeio: %s\nLocalizacao: %s\nBateria: %d\nAutonomia: %d\nCusto: %d\nEstado: A ser utilizado\n\n", inicio->id, inicio->meio, inicio->localizacao, inicio->bateria, inicio->autonomia, inicio->custo);
+				char loc[50];
+				obtergeocodigo(loc, inicio->localizacao);
+				printf("ID: %d\nMeio: %s\nLocalizacao: %s\nBateria: %d\nAutonomia: %d\nCusto: %d\nEstado: A ser utilizado\n\n", inicio->id, inicio->meio, loc, inicio->bateria, inicio->autonomia, inicio->custo);
 			}
 		}
 		inicio = inicio->seguinte;
@@ -275,7 +282,9 @@ void listarPorAutonomia(Meio* inicio)
 	}
 	ordenarPorAutonomia(inicio);
 	while (inicio != NULL) {
-		printf("ID: %d\nMeio: %s\nLocalizacao: %s\nBateria: %d\nAutonomia: %d\nCusto: %d\nEstado: %d\n\n", inicio->id, inicio->meio, inicio->localizacao, inicio->bateria, inicio->autonomia, inicio->custo, inicio->reservado);
+		char loc[50];
+		obtergeocodigo(loc, inicio->localizacao);
+		printf("ID: %d\nMeio: %s\nLocalizacao: %s\nBateria: %d\nAutonomia: %d\nCusto: %d\nEstado: %d\n\n", inicio->id, inicio->meio, loc, inicio->bateria, inicio->autonomia, inicio->custo, inicio->reservado);
 		inicio = inicio->seguinte;
 	}
 }
@@ -284,12 +293,14 @@ void mostrarPorLocalizacao(Meio* inicio, char loc[])
 {
 	Meio* meio = inicio; // Apontar para o início da lista
 	int i = 0;
-	printf("Meios disponiveis na localizacao: %s\n\n", loc);
+	printf("Meios disponiveis:\n\n");
 	while (meio != NULL)
 	{
 		if (strcmp(meio->localizacao, loc) == 0)
 		{
-			printf("ID: %d\nMeio: %s\nLocalizacao: %s\nBateria: %d\nAutonomia: %d\nCusto: %d\nEstado: %d\n\n", meio->id, meio->meio, meio->localizacao, meio->bateria, meio->autonomia, meio->custo, meio->reservado);
+			char loc[50];
+			obtergeocodigo(loc, meio->localizacao);
+			printf("ID: %d\nMeio: %s\nLocalizacao: %s\nBateria: %d\nAutonomia: %d\nCusto: %d\nEstado: %d\n\n", meio->id, meio->meio, loc, meio->bateria, meio->autonomia, meio->custo, meio->reservado);
 			i++;
 		}
 		meio = meio->seguinte;

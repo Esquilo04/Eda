@@ -12,13 +12,12 @@ int criarVertice(Grafo* g, int id, char geo[])
     Grafo novo = *g;
     Adjacente adj;
 
-    // Cria um novo vértice se não existir
     novo = malloc(sizeof(struct registo1));
     if (novo != NULL)
     {
         novo->id = id;
         strcpy(novo->geo, geo);
-        novo->adjacentes = NULL; // Inicializa o ponteiro adjacentes como NULL
+        novo->adjacentes = NULL;
         novo->meio = NULL;
         novo->clientes = NULL;
         novo->seguinte = *g;
@@ -67,19 +66,19 @@ int inserirMeio(Grafo g, Meio* inicio, int id, int codigoMeio)
             {
                 if (meio->id == codigoMeio)
                 {
-                    if (strcmp(g->geo, meio->localizacao) == 0)
-                    {
+                   // if (strcmp(g->geo, meio->localizacao) == 0)
+                    //{
                         Meios novo = malloc(sizeof(struct registo3));
                         novo->codigo = codigoMeio;
                         novo->seguinte = g->meio;
                         g->meio = novo;
                         return(1);
-                    }
-                    else
-                    {
-                        printf("O geocodigo do veiculo nao e o mesmo do vertice!\n");
-                        return(0);
-                    }
+                    //}
+                    //else
+                    //{
+                      //  printf("O geocodigo do veiculo nao e o mesmo do vertice!\n");
+                        //return(0);
+                    //}
                 }
                  meio = meio->seguinte;
             }
@@ -245,6 +244,59 @@ char geocodigo(char localizacao[], int o)
     {
         printf("Insira uma opcao valida!!");
         exit(0);
+    }
+}
+
+char obtergeocodigo(char localizacao[], char geo[])
+{
+    if (strcmp(geo, "safra.trenó.massas") == 0)
+    {
+        strcpy(localizacao, "Castelo");
+        return(localizacao);
+    }
+    else if (strcmp(geo, "leiga.telha.valorizo") == 0)
+    {
+        strcpy(localizacao, "Hospital");
+        return(localizacao);
+    }
+    else if (strcmp(geo, "nossas.mobilizações.cegos") == 0)
+    {
+        strcpy(localizacao, "shopping");
+        return(localizacao);
+    }
+    else if (strcmp(geo, "clarinetistas.acha.papéis") == 0)
+    {
+        strcpy(localizacao, "Penha");
+        return(localizacao);
+    }
+    else if (strcmp(geo, "massas.movam.sapato") == 0)
+    {
+        strcpy(localizacao, "Mercado");
+        return(localizacao);
+    }
+    else if (strcmp(geo, "caules.rojão.penal") == 0)
+    {
+        strcpy(localizacao, "Rua Paio Galvao");
+        return(localizacao);
+    }
+    else if (strcmp(geo, "crua.desejo.cálcio") == 0)
+    {
+        strcpy(localizacao, "Estatua D. Afonso Henriques");
+        return(localizacao);
+    }
+    else if (strcmp(geo, "saem.beleza.canga") == 0)
+    {
+        strcpy(localizacao, "Estacao Ferroviaria");
+        return(localizacao);
+    }
+    else if (strcmp(geo, "circo.dama.opondo") == 0)
+    {
+        strcpy(localizacao, "Toural");
+        return(localizacao);
+    }
+    else
+    {
+        printf("Insira uma opcao valida!!");
     }
 }
 
@@ -435,3 +487,69 @@ Grafo* lerConteudoVertice(Grafo g, Meio* inicio)
     return(g);
 }
 
+void mostrarMeiosPorDistancia(Grafo g, Meio* meio, int idVertice, int raio)
+{
+    Grafo vertice = g;
+    char geo[50], rua[50];
+    while (vertice != NULL)
+    {
+        if (vertice->id == idVertice)
+        {
+            geocodigo(geo, idVertice);
+            obtergeocodigo(rua, geo);
+            printf("------------------------------------------------------------------\n");
+            printf("Meios Disponiveis na localizacao %s (localizacao atual):\n", rua);
+            listarMeiosPorId(vertice->meio, meio);
+
+            Adjacente adj = vertice->adjacentes;
+            while (adj != NULL)
+            {
+                if (adj->id != 0 && adj->peso < raio)
+                {
+                    Grafo adjacente = g;
+                    while (adjacente != NULL)
+                    {
+                        if (adjacente->id == adj->id)
+                        {
+                            break;
+                        }
+                        adjacente = adjacente->seguinte;
+                    }
+                    if (adjacente != NULL)
+                    {
+                        geocodigo(geo, adj->id);
+                        obtergeocodigo(rua, geo);
+                        printf("\nMeios Disponiveis na localizacao %s (%d metros de distancia):\n", rua, adj->peso);
+                        listarMeiosPorId(adjacente->meio, meio);
+                    }
+                }
+                adj = adj->seguinte;
+            }
+            printf("\n------------------------------------------------------------------\n");
+
+            return;
+        }
+        vertice = vertice->seguinte;
+    }
+    printf("O vertice %d nao foi encontrado.\n", idVertice);
+}
+
+void listarMeiosPorId(Meios meio, Meio* meios) {
+    if (meio == NULL) {
+        printf("Nenhum meio disponivel.\n");
+        return;
+    }
+
+    Meio* meioAtual = meios; 
+
+    while (meio != NULL) {
+        while (meioAtual != NULL) {
+            if (meioAtual->id == meio->codigo) {
+                printf("ID do meio: %d | Tipo: %s | Bateria: %d\n", meioAtual->id, meioAtual->meio, meioAtual->bateria);
+            }
+            meioAtual = meioAtual->seguinte;
+        }
+        meio = meio->seguinte;
+        meioAtual = meios; // Reiniciar a variável para percorrer a lista novamente
+    }
+}

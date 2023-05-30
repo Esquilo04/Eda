@@ -226,20 +226,13 @@ int main()
 							if (opcao5 == 5)
 							{
 								clearr();
-								int atual, destino, raio;
-								char meio[50];
+								int atual, raio;
 								printf("Qual a sua localizacao atual?\n");
 								printf("1 - Castelo\n2 - Hospital\n3 - Shopping\n4 - Penha\n5 - Mercado Municipal\n6 - Rua Paio Galvao\n7 - Estatua D. Afonso Henriques\n8 - Estacao Ferroviria\n9 - Largo do Toural\n");
 								scanf("%d", &atual);
-								printf("Para onde deseja ir?\n");
-								scanf("%d", &destino);
-								printf("Qual o tipo de meio que deseja efetuar procura?\n");
-								scanf("%s", meio);
 								printf("Qual o raio (em metros) que deseja procurar?\n");
 								scanf("%d", &raio);
-								geocodigo(loc, atual);
-								int num = numVertices;
-								teste(meio, loc, meio);
+								mostrarMeiosPorDistancia(guimaraes, meio, atual, raio);
 							}
 							else if (opcao5 == 9)
 							{

@@ -15,20 +15,19 @@ typedef struct registo4
 	struct registo4* seguinte;
 } *Clientes;
 
-// Representação de um grafo orientado e pesado
 typedef struct registo2
 {
-	int id; // geocódigo what3words
+	int id; 
 	int peso;
 	struct registo2* seguinte;
 } *Adjacente;
 
 typedef struct registo1
 {
-	int id; // geocódigo what3words
+	int id;
 	char geo[50];
 	Adjacente adjacentes;
-	Meios meio; // Lista ligada com os códigos dos meios de transporte existente
+	Meios meio;
 	Clientes clientes;
 	struct registo1* seguinte;
 } *Grafo;
@@ -48,10 +47,7 @@ Grafo* lerConteudoVertice(Grafo g, Meio* inicio);
 int InserirClientes(Grafo g, Cliente* inicio, int idvertice, int idCliente);
 void salvarClientesPorId(Grafo g);
 int existeVertice2(Grafo g, int id);
+char obtergeocodigo(char localizacao[], char geo[]);
 
-int numVertices(Grafo g);
-void teste(Meio* meio, char loca[], char tipomeio[]);
-int obterMenorDistancia(int distancias[], int visitado[], int numVertices);
-void imprimirCaminho(Grafo g, int caminho[], int verticeAtual);
-void imprimirCaminhoMaisCurto(Grafo g, int caminho[], int distancias[], int inicio, int fim);
-void encontrarCaminhoMaisCurto(Grafo g, Meio* teste15, int Vertices, int inicio, int fim, int limite, char tipo[]);
+void mostrarMeiosPorDistancia(Grafo g, Meio* meio, int idVertice, int raio);
+void listarMeiosPorId(Meios meio, Meio* meios);
