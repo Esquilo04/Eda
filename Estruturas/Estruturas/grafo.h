@@ -51,3 +51,4 @@ char obtergeocodigo(char localizacao[], char geo[]);
 
 void mostrarMeiosPorDistancia(Grafo g, Meio* meio, int idVertice, int raio);
 void listarMeiosPorId(Meios meio, Meio* meios);
+void mostrarMeiosPorDistancia2(Grafo g, Meio* meio, int idVertice, int raio);

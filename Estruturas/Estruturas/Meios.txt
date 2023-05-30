@@ -1,7 +1,7 @@
-7;bicicleta;nossas.mobilizações.cegos;52;52;14;0;0
-5;bicicleta;safra.trenó.massas;51;51;12;0;0
-3;trotinete;nossas.mobilizações.cegos;50;50;14;0;0
-1;trotinete;safra.trenó.massas;50;50;12;0;0
-2;trotinete;leiga.telha.valorizo;50;50;13;0;0
-4;trotinete;clarinetistas.acha.papéis;50;50;15;0;0
 6;bicicleta;leiga.telha.valorizo;51;51;12;0;0
+4;trotinete;clarinetistas.acha.papéis;50;50;15;0;0
+2;trotinete;leiga.telha.valorizo;50;50;13;0;0
+1;trotinete;safra.trenó.massas;50;50;12;0;0
+3;trotinete;nossas.mobilizações.cegos;50;50;14;0;0
+5;bicicleta;safra.trenó.massas;51;51;12;0;0
+7;bicicleta;nossas.mobilizações.cegos;52;52;14;0;0

@@ -32,7 +32,7 @@ int criarAresta(Grafo g, int vOrigem, int vDestino, int peso)
     if (existeVertice(g, vOrigem) && existeVertice(g, vDestino))
     {
         while (g != NULL)
-        { 
+        {
             if (g->id == vOrigem)
             {
                 novo = malloc(sizeof(struct registo2));
@@ -66,13 +66,13 @@ int inserirMeio(Grafo g, Meio* inicio, int id, int codigoMeio)
             {
                 if (meio->id == codigoMeio)
                 {
-                   // if (strcmp(g->geo, meio->localizacao) == 0)
-                    //{
-                        Meios novo = malloc(sizeof(struct registo3));
-                        novo->codigo = codigoMeio;
-                        novo->seguinte = g->meio;
-                        g->meio = novo;
-                        return(1);
+                    // if (strcmp(g->geo, meio->localizacao) == 0)
+                     //{
+                    Meios novo = malloc(sizeof(struct registo3));
+                    novo->codigo = codigoMeio;
+                    novo->seguinte = g->meio;
+                    g->meio = novo;
+                    return(1);
                     //}
                     //else
                     //{
@@ -80,7 +80,7 @@ int inserirMeio(Grafo g, Meio* inicio, int id, int codigoMeio)
                         //return(0);
                     //}
                 }
-                 meio = meio->seguinte;
+                meio = meio->seguinte;
             }
         }
         else
@@ -101,11 +101,11 @@ int InserirClientes(Grafo g, Cliente* inicio, int idvertice, int idCliente)
             {
                 if (cliente->id == idCliente)
                 {
-                        Clientes novo = malloc(sizeof(struct registo4));
-                        novo->codigo = idCliente;
-                        novo->seguinte = g->clientes;
-                        g->meio = novo;
-                        return(1);
+                    Clientes novo = malloc(sizeof(struct registo4));
+                    novo->codigo = idCliente;
+                    novo->seguinte = g->clientes;
+                    g->meio = novo;
+                    return(1);
 
                 }
                 cliente = cliente->seguinte;
@@ -165,7 +165,7 @@ void listarAdjacentes(Grafo g, int id)
                 }
                 adj = adj->seguinte;
             }
-            if (aux<1)
+            if (aux < 1)
             {
                 printf("Nao possui vertices adjacentes.\n");
             }
@@ -339,7 +339,7 @@ void salvarGrafo(Grafo g)
 
 int existeVertice2(Grafo g, int id)
 {
-    int aux=10;
+    int aux = 10;
 
     while (g != NULL)
     {
@@ -359,7 +359,7 @@ int existeVertice2(Grafo g, int id)
 Grafo* lerGrafo()
 {
     FILE* fp;
-    Grafo* grafo = NULL; 
+    Grafo* grafo = NULL;
 
     fp = fopen("Grafo.txt", "r");
 
@@ -376,9 +376,9 @@ Grafo* lerGrafo()
             }
             else
             {
-                if (existeVertice2(grafo, id)==11)
+                if (existeVertice2(grafo, id) == 11)
                 {
-                    if (existeVertice2(grafo, id2)==11)
+                    if (existeVertice2(grafo, id2) == 11)
                     {
                         criarAresta(grafo, id, id2, peso);
                     }
@@ -423,11 +423,11 @@ void salvarMeiosPorId(Grafo g)
         {
             meios = g->meio;
 
-                while (meios != NULL)
-                {
-                    fprintf(fp, "%d;%d\n", g->id, meios->codigo); 
-                    meios = meios->seguinte;
-                }
+            while (meios != NULL)
+            {
+                fprintf(fp, "%d;%d\n", g->id, meios->codigo);
+                meios = meios->seguinte;
+            }
             g = g->seguinte;
         }
         fclose(fp);
@@ -454,7 +454,7 @@ void salvarClientesPorId(Grafo g)
 
             while (clientes != NULL)
             {
-                fprintf(fp, "%d;%d\n", g->id, clientes->codigo); 
+                fprintf(fp, "%d;%d\n", g->id, clientes->codigo);
                 clientes = clientes->seguinte;
             }
             g = g->seguinte;
@@ -473,7 +473,7 @@ Grafo* lerConteudoVertice(Grafo g, Meio* inicio)
     Meio* meio = inicio;
 
     fp = fopen("Vertice.txt", "r");
-    int id=0, id2=0;
+    int id = 0, id2 = 0;
 
     if (fp != NULL)
     {
@@ -540,12 +540,17 @@ void listarMeiosPorId(Meios meio, Meio* meios) {
         return;
     }
 
-    Meio* meioAtual = meios; 
+    Meio* meioAtual = meios;
 
     while (meio != NULL) {
-        while (meioAtual != NULL) {
-            if (meioAtual->id == meio->codigo) {
-                printf("ID do meio: %d | Tipo: %s | Bateria: %d\n", meioAtual->id, meioAtual->meio, meioAtual->bateria);
+        while (meioAtual != NULL) 
+        {
+            if (meioAtual->id == meio->codigo) 
+            {
+                if (meioAtual->reservado == 0)
+                {
+                    printf("ID do meio: %d | Tipo: %s | Bateria: %d\n", meioAtual->id, meioAtual->meio, meioAtual->bateria);
+                }
             }
             meioAtual = meioAtual->seguinte;
         }

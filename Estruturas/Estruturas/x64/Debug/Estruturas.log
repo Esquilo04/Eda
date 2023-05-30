@@ -1,7 +1,7 @@
 ﻿  grafo.c
 C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\grafo.h(3,10): warning C4067: tokens inesperados após diretiva de pré-processador - esperado um newline
 C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\grafo.c(13,15): warning C4101: 'adj': variável local não referenciada
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\grafo.c(107,39): warning C4133: '=': tipos incompatíveis - de 'Clientes' para 'Meios'
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\grafo.c(107,35): warning C4133: '=': tipos incompatíveis - de 'Clientes' para 'Meios'
 C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\grafo.c(201,28): warning C4047: 'return': 'char' difere em níveis de indireção de 'char *'
 C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\grafo.c(206,28): warning C4047: 'return': 'char' difere em níveis de indireção de 'char *'
 C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\grafo.c(211,28): warning C4047: 'return': 'char' difere em níveis de indireção de 'char *'
@@ -45,10 +45,10 @@ C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\grafo
 C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\grafo.c(402,42): warning C4047: 'função': 'Grafo' difere em níveis de indireção de 'Grafo *'
 C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\grafo.c(402,37): warning C4024: 'criarAresta': tipos diferentes para parâmetro formal e real 1
 C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\grafo.c(487,14): warning C4047: 'return': 'Grafo *' difere em níveis de indireção de 'Grafo'
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\grafo.c(91): warning C4715: 'inserirMeio': nem todos os caminhos de controle retornam um valor
-C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\grafo.c(56): warning C4715: 'criarAresta': nem todos os caminhos de controle retornam um valor
 C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\grafo.c(27): warning C4715: 'criarVertice': nem todos os caminhos de controle retornam um valor
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\grafo.c(56): warning C4715: 'criarAresta': nem todos os caminhos de controle retornam um valor
 C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\grafo.c(119): warning C4715: 'InserirClientes': nem todos os caminhos de controle retornam um valor
 C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\grafo.c(194): warning C4715: 'existeVertice': nem todos os caminhos de controle retornam um valor
 C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\grafo.c(301): warning C4715: 'obtergeocodigo': nem todos os caminhos de controle retornam um valor
+C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\Estruturas\grafo.c(91): warning C4715: 'inserirMeio': nem todos os caminhos de controle retornam um valor
   Estruturas.vcxproj -> C:\Users\nunin\OneDrive\Ambiente de Trabalho\Git\Eda\Estruturas\x64\Debug\Estruturas.exe

@@ -268,3 +268,27 @@ ID Meio: 5
 Data: 29/05
 Hora: 10:59
 
+Opcao: Entrega
+ID cliente: 1
+ID Meio: 7
+Data: 30/05
+Hora: 10:31
+
+Opcao: Entrega
+ID cliente: 1
+ID Meio: 2
+Data: 30/05
+Hora: 10:31
+
+Opcao: Entrega
+ID cliente: 1
+ID Meio: 7
+Data: 30/05
+Hora: 10:33
+
+Opcao: Entrega
+ID cliente: 1
+ID Meio: 2
+Data: 30/05
+Hora: 10:33
+
